@@ -1,125 +1,339 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LEE’s Technology</title>
-  <meta name="description" content="Electrical Systems · Automation · Practical Problem Solving" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>LEE's Technology | 이 기술 포트폴리오</title>
+  <meta name="description" content="Electrical Systems · Automation · Practical Problem Solving / 전기 시스템 · 자동화 · 현장 문제 해결" />
+
   <style>
-    :root { --bg:#0b1020; --card:rgba(255,255,255,.08); --text:#eaf0ff; --muted:rgba(234,240,255,.75); --line:rgba(255,255,255,.14); }
-    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:radial-gradient(1200px 800px at 20% 10%, #203a7a 0%, var(--bg) 55%); color:var(--text);}
-    a{color:inherit}
-    .wrap{max-width:980px;margin:0 auto;padding:56px 18px}
-    .hero{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.04)}
-    .dot{width:10px;height:10px;border-radius:50%;background:#4fe1c1;box-shadow:0 0 24px rgba(79,225,193,.45)}
-    h1{font-size:44px;line-height:1.1;margin:14px 0 8px}
-    .sub{font-size:16px;color:var(--muted);margin:0 0 18px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:22px}
-    .card{grid-column:span 12;padding:18px;border:1px solid var(--line);border-radius:18px;background:var(--card);backdrop-filter:blur(10px)}
-    @media(min-width:860px){
-      .card.half{grid-column:span 6}
-      .card.third{grid-column:span 4}
+    :root{
+      --bg1:#081426;
+      --bg2:#0b2242;
+      --card:rgba(255,255,255,.08);
+      --line:rgba(255,255,255,.14);
+      --text:#eef6ff;
+      --muted:rgba(238,246,255,.78);
+      --muted2:rgba(238,246,255,.62);
+      --accent:#59b2ff;
+      --accent2:#9ef6c3;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius:20px;
     }
-    h2{font-size:18px;margin:0 0 10px}
-    p{margin:0;color:var(--muted);line-height:1.65}
-    ul{margin:10px 0 0 18px;color:var(--muted);line-height:1.7}
-    .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);text-decoration:none}
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans KR", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 700px at 15% 10%, rgba(89,178,255,.22), transparent 55%),
+        radial-gradient(900px 600px at 80% 20%, rgba(158,246,195,.16), transparent 55%),
+        linear-gradient(140deg, var(--bg1), var(--bg2));
+      min-height:100vh;
+    }
+
+    a{color:inherit}
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:42px 18px 70px;
+    }
+
+    /* Top badge */
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .dot{
+      width:12px;height:12px;border-radius:50%;
+      background:var(--accent2);
+      box-shadow:0 0 0 6px rgba(158,246,195,.15);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+      margin-top:18px;
+      align-items:start;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+    }
+
+    h1{
+      margin:14px 0 10px;
+      font-size:56px;      /* 크게 */
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    @media (max-width: 520px){
+      h1{font-size:40px}
+    }
+
+    .subtitle{
+      margin:0 0 16px;
+      font-size:22px;      /* 크게 */
+      line-height:1.5;
+      color:var(--muted);
+    }
+
+    .lead{
+      margin:0 0 18px;
+      font-size:20px;
+      line-height:1.65;
+      color:var(--muted);
+    }
+
+    /* Buttons */
+    .btns{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;
+      font-size:18px;
+      color:var(--text);
+      box-shadow: 0 10px 26px rgba(0,0,0,.20);
+    }
     .btn:hover{background:rgba(255,255,255,.10)}
-    .small{font-size:13px;color:rgba(234,240,255,.6);margin-top:18px}
-    .pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);margin:6px 8px 0 0}
-    .hr{height:1px;background:var(--line);margin:12px 0}
+    .btn.primary{
+      border-color: rgba(89,178,255,.55);
+      background: rgba(89,178,255,.16);
+    }
+
+    /* Cards / grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top:22px;
+    }
+    .card{
+      grid-column: span 12;
+      padding:18px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    @media (min-width: 900px){
+      .card.half{grid-column: span 6}
+      .card.third{grid-column: span 4}
+    }
+
+    .card h2{
+      margin:0 0 10px;
+      font-size:24px;
+      letter-spacing:-.01em;
+    }
+    .small{
+      color:var(--muted2);
+      font-size:16px;
+      line-height:1.6;
+    }
+
+    /* Skill chips */
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{
+      padding:10px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.05);
+      font-size:16px;
+      color:var(--muted);
+    }
+
+    /* Projects */
+    .proj{
+      display:grid;
+      gap:12px;
+      margin-top:6px;
+    }
+    .proj-item{
+      padding:14px 14px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background: rgba(0,0,0,.16);
+    }
+    .proj-title{
+      margin:0 0 6px;
+      font-size:19px;
+    }
+    .kv{margin:0;color:var(--muted);font-size:16px;line-height:1.55}
+    footer{
+      margin-top:18px;
+      color:var(--muted2);
+      font-size:14px;
+    }
+
+    /* Notice */
+    .notice{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px dashed rgba(255,255,255,.22);
+      background: rgba(0,0,0,.12);
+      color: var(--muted);
+      font-size:16px;
+      line-height:1.6;
+    }
   </style>
 </head>
 
 <body>
   <main class="wrap">
+    <div class="badge">
+      <span class="dot"></span>
+      <span>Available for global opportunities · 해외/국내 프로젝트 협업 가능</span>
+    </div>
+
     <section class="hero">
+      <!-- Left -->
       <div>
-        <div class="badge"><span class="dot"></span><span>Available for global opportunities</span></div>
-        <h1>LEE’s Technology</h1>
-        <p class="sub"><strong>Electrical Systems · Automation · Practical Problem Solving</strong></p>
-        <p style="max-width:740px;color:rgba(234,240,255,.82);line-height:1.7;margin:0">
-          I build reliable automation and electrical systems based on real-world field experience.
+        <h1>LEE's Technology<br><span style="font-size:.62em; color:var(--muted)">이 기술 포트폴리오</span></h1>
+
+        <p class="subtitle">
+          Electrical Systems · Automation · Practical Problem Solving<br>
+          전기 시스템 · 자동화 · 현장 문제 해결
+        </p>
+
+        <p class="lead">
+          I build reliable automation and electrical systems based on real-world field experience.<br>
+          현장 경험을 바탕으로 <b>신뢰할 수 있는 전기·자동화 시스템</b>을 구축합니다.
         </p>
 
         <div class="btns">
-          <a class="btn" href="#projects">Explore Projects →</a>
-          <!-- 이메일만 교체하세요 -->
-          <a class="btn" href="mailto:supersungkyu@gmail.com">Email</a>
-          <!-- 링크는 나중에 넣어도 됩니다 -->
-          <a class="btn" href="#" onclick="alert('LinkedIn/GitHub link can be added later.');return false;">LinkedIn / GitHub</a>
+          <!-- 링크는 필요하면 바꿔도 됨 -->
+          <a class="btn primary" href="#projects">Explore Projects · 프로젝트 보기 →</a>
+          <a class="btn" href="mailto:you@example.com">Email · 이메일</a>
+          <a class="btn" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener">GitHub · 깃허브</a>
+          <a class="btn" href="#" onclick="alert('LinkedIn 링크를 넣을 수 있어요 😊'); return false;">LinkedIn · 링크드인</a>
         </div>
 
-        <div class="small">Focus: reliability, safety, efficiency, and clear technical communication.</div>
+        <div class="notice">
+          💡 Tip: 위 Email 주소(<b>you@example.com</b>)를 성규님 실제 이메일로 바꾸면 바로 사용 가능합니다.
+        </div>
+      </div>
+
+      <!-- Right -->
+      <div class="card">
+        <h2>Focus · 핵심 가치</h2>
+        <p class="small">
+          Reliability, Safety, Efficiency, and clear technical communication.<br>
+          신뢰성 · 안전 · 효율 · 명확한 기술 커뮤니케이션
+        </p>
+        <div class="chips" style="margin-top:10px">
+          <span class="chip">Reliability · 신뢰성</span>
+          <span class="chip">Safety · 안전</span>
+          <span class="chip">Efficiency · 효율</span>
+          <span class="chip">RCA · 고장원인분석</span>
+          <span class="chip">Documentation · 문서화</span>
+        </div>
       </div>
     </section>
 
     <section class="grid">
-      <div class="card half" id="about">
-        <h2>About</h2>
-        <p>
-          I am an electrical technician with extensive hands-on experience in electrical systems, automation,
-          and operational problem solving. My background is rooted in real field environments where reliability,
-          safety, and efficiency matter more than theory alone.
+      <div class="card half">
+        <h2>About · 소개</h2>
+        <p class="small">
+          I am an electrical technician with hands-on experience in electrical systems, automation, and operational problem solving.<br>
+          저는 전기 시스템·자동화·현장 문제 해결을 중심으로 실무 경험을 쌓아온 전기 기술자입니다.
         </p>
-        <div class="hr"></div>
-        <p>
-          Today, I focus on turning complex technical problems into clear, practical solutions that work in real operations — not just on paper.
+        <p class="small">
+          Today, I focus on turning complex technical problems into practical solutions that work in real operations.<br>
+          현재는 복잡한 기술 문제를 <b>현장에서 바로 작동하는 실용적 해결책</b>으로 바꾸는 데 집중합니다.
         </p>
       </div>
 
       <div class="card half">
-        <h2>Core Skills</h2>
-        <div>
-          <span class="pill">Electrical Systems & Facilities</span>
-          <span class="pill">Industrial / Process Automation</span>
-          <span class="pill">Troubleshooting (RCA)</span>
-          <span class="pill">Reliability & Safety</span>
-          <span class="pill">Technical Documentation</span>
-          <span class="pill">Cross-team Communication</span>
+        <h2>Core Skills · 핵심 역량</h2>
+        <div class="chips">
+          <span class="chip">Electrical Systems & Facilities · 전기설비</span>
+          <span class="chip">Industrial / Process Automation · 자동화</span>
+          <span class="chip">Troubleshooting (RCA) · 트러블슈팅</span>
+          <span class="chip">Reliability & Safety · 신뢰성/안전</span>
+          <span class="chip">Technical Documentation · 기술문서</span>
+          <span class="chip">Cross-team Communication · 협업</span>
         </div>
-        <div class="hr"></div>
-        <p class="small">Certifications / specific tools can be added later without redesign.</p>
+        <p class="small" style="margin-top:10px">
+          Certifications / specific tools can be added later without redesign.<br>
+          자격증/툴은 나중에 추가해도 구조가 깨지지 않도록 만들었습니다.
+        </p>
       </div>
 
       <div class="card" id="projects">
-        <h2>Projects (Starter)</h2>
-        <p>Keep it simple. One strong project beats five vague ones.</p>
-        <ul>
-          <li><strong>Project 01 — Automation / Electrical Systems</strong><br/>
-            Problem: Repeated operational inefficiencies and manual intervention.<br/>
-            Solution: Designed and implemented a structured automation approach.<br/>
-            Result: Improved reliability, reduced manual errors, and clearer workflows.
-          </li>
-        </ul>
-        <div class="small">👉 Later, add numbers (downtime ↓, time saved, defect rate ↓) to make it “hire-ready”.</div>
+        <h2>Projects (Starter) · 프로젝트(초안)</h2>
+        <p class="small">Keep it simple. One strong project beats five vague ones. · 하나의 강한 프로젝트가 다섯 개의 애매한 것보다 낫습니다.</p>
+
+        <div class="proj">
+          <div class="proj-item">
+            <h3 class="proj-title">Project 01 — Automation / Electrical Systems · 자동화/전기 시스템</h3>
+            <p class="kv"><b>Problem · 문제</b>: Repeated operational inefficiencies and manual intervention.<br>반복되는 비효율과 수동 개입</p>
+            <p class="kv"><b>Solution · 해결</b>: Structured automation approach and standardization.<br>구조화된 자동화 접근과 표준화</p>
+            <p class="kv"><b>Result · 결과</b>: Improved reliability, fewer errors, clearer workflows.<br>신뢰성 향상, 오류 감소, 작업 흐름 명확화</p>
+          </div>
+
+          <div class="proj-item">
+            <h3 class="proj-title">Project 02 — Maintenance Improvement · 유지보수 개선</h3>
+            <p class="kv"><b>Problem · 문제</b>: Downtime due to unclear failure patterns.<br>고장 패턴이 불명확해 다운타임 발생</p>
+            <p class="kv"><b>Solution · 해결</b>: RCA + preventive checks + documentation.<br>원인분석 + 예방점검 + 문서화</p>
+            <p class="kv"><b>Result · 결과</b>: Faster recovery and better communication.<br>복구 시간 단축 및 커뮤니케이션 개선</p>
+          </div>
+        </div>
       </div>
 
-      <div class="card half" id="contact">
-        <h2>Contact</h2>
-        <p>
-          Email: <a href="mailto:YOUR_EMAIL_HERE"><strong>YOUR_EMAIL_HERE</strong></a><br/>
-          Open to collaboration, technical discussion, and global opportunities.
+      <div class="card third">
+        <h2>Contact · 연락</h2>
+        <p class="small">
+          Email: <b>you@example.com</b><br>
+          이메일 주소를 실제 주소로 바꾸면 됩니다.
         </p>
       </div>
 
-      <div class="card half">
-        <h2>Next Up (20-day plan anchor)</h2>
-        <ul>
-          <li>Day 1–3: finalize this page + domain connection</li>
-          <li>Day 4–10: 1 project case study (before/after) 작성</li>
-          <li>Day 11–20: 영어(이력서/메일) + 지원용 문장 템플릿 구축</li>
-        </ul>
+      <div class="card third">
+        <h2>Links · 링크</h2>
+        <p class="small">
+          GitHub: supersungkyu-create<br>
+          LinkedIn: (추가 예정)
+        </p>
+      </div>
+
+      <div class="card third">
+        <h2>Next · 다음</h2>
+        <p class="small">
+          ✅ 자격증/경력/사진/프로젝트 실사례를 추가해 “완성 포트폴리오”로 업그레이드할 수 있어요.
+        </p>
       </div>
     </section>
 
-    <footer class="small" style="margin-top:26px">
-      © <span id="y"></span> LEE’s Technology · Built for international communication
+    <footer>
+      © <span id="y"></span> LEE's Technology · 이 기술 포트폴리오
     </footer>
   </main>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
