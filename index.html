@@ -1,339 +1,327 @@
+
 <!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>LEE's Technology | 이 기술 포트폴리오</title>
-  <meta name="description" content="Electrical Systems · Automation · Practical Problem Solving / 전기 시스템 · 자동화 · 현장 문제 해결" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LEE’s Technology | 이의 기술</title>
+  <meta name="description" content="Electrical Systems · Automation · Practical Problem Solving | 전기 시스템 · 자동화 · 현장 문제 해결" />
 
   <style>
     :root{
-      --bg1:#081426;
-      --bg2:#0b2242;
-      --card:rgba(255,255,255,.08);
-      --line:rgba(255,255,255,.14);
-      --text:#eef6ff;
-      --muted:rgba(238,246,255,.78);
-      --muted2:rgba(238,246,255,.62);
-      --accent:#59b2ff;
-      --accent2:#9ef6c3;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-      --radius:20px;
+      --bg:#0b1220;
+      --panel: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+      --accent: #7dd3fc; /* subtle sky */
+      --radius: 16px;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --max: 1040px;
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans KR", sans-serif;
       color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
       background:
-        radial-gradient(1000px 700px at 15% 10%, rgba(89,178,255,.22), transparent 55%),
-        radial-gradient(900px 600px at 80% 20%, rgba(158,246,195,.16), transparent 55%),
-        linear-gradient(140deg, var(--bg1), var(--bg2));
-      min-height:100vh;
+        radial-gradient(1100px 700px at 18% 12%, rgba(125,211,252,.14), transparent 55%),
+        radial-gradient(900px 600px at 85% 18%, rgba(167,139,250,.10), transparent 60%),
+        linear-gradient(180deg, #07101f 0%, #060b16 100%);
     }
 
-    a{color:inherit}
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:42px 18px 70px;
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:44px 18px 60px}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-bottom:20px;
     }
-
-    /* Top badge */
     .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
+      display:inline-flex; align-items:center; gap:10px;
       padding:10px 14px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.05);
+      background:rgba(255,255,255,.04);
       border-radius:999px;
+      font-size:13px;
       color:var(--muted);
-      font-size:16px;
     }
     .dot{
-      width:12px;height:12px;border-radius:50%;
-      background:var(--accent2);
-      box-shadow:0 0 0 6px rgba(158,246,195,.15);
+      width:10px; height:10px; border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 0 4px rgba(34,197,94,.12);
     }
 
-    /* Hero */
-    .hero{
+    header{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:22px;
-      margin-top:18px;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
       align-items:start;
-    }
-    @media (max-width: 900px){
-      .hero{grid-template-columns:1fr}
+      margin-top:10px;
     }
 
+    .hero{
+      padding:22px 22px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
+    }
     h1{
-      margin:14px 0 10px;
-      font-size:56px;      /* 크게 */
-      line-height:1.05;
-      letter-spacing:-.02em;
+      margin:0 0 8px;
+      font-size:32px;           /* ✅ 과하지 않게 */
+      letter-spacing:-.3px;
+      line-height:1.15;
     }
-    @media (max-width: 520px){
-      h1{font-size:40px}
-    }
-
-    .subtitle{
-      margin:0 0 16px;
-      font-size:22px;      /* 크게 */
-      line-height:1.5;
+    .sub{
+      margin:0 0 12px;
+      font-size:15px;
       color:var(--muted);
+      line-height:1.55;
+    }
+    .sub b{color:var(--text); font-weight:650}
+    .kren{
+      margin:0;
+      font-size:14px;
+      color:var(--muted2);
+      line-height:1.6;
     }
 
-    .lead{
-      margin:0 0 18px;
-      font-size:20px;
-      line-height:1.65;
-      color:var(--muted);
-    }
-
-    /* Buttons */
-    .btns{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:12px;
+    .cta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:16px;
     }
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 16px;
-      border-radius:14px;
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.06);
-      text-decoration:none;
-      font-size:18px;
+      border-radius:12px;
+      background:rgba(255,255,255,.04);
+      font-size:14px;
       color:var(--text);
-      box-shadow: 0 10px 26px rgba(0,0,0,.20);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
-    .btn:hover{background:rgba(255,255,255,.10)}
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.16)}
     .btn.primary{
-      border-color: rgba(89,178,255,.55);
-      background: rgba(89,178,255,.16);
+      background:rgba(125,211,252,.14);
+      border-color:rgba(125,211,252,.25);
+    }
+    .btn.primary:hover{background:rgba(125,211,252,.18)}
+    .btn .mini{font-size:12px; color:var(--muted)}
+
+    .side{
+      padding:18px 18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.04);
+    }
+    .side h2{
+      margin:0 0 12px;
+      font-size:16px;
+      letter-spacing:-.2px;
+    }
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      font-size:13px;
+      color:var(--muted);
     }
 
-    /* Cards / grid */
     .grid{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap:14px;
-      margin-top:22px;
+      margin-top:16px;
     }
     .card{
-      grid-column: span 12;
-      padding:18px;
-      border-radius: var(--radius);
-      background: var(--card);
+      grid-column: span 6;
+      padding:18px 18px;
       border:1px solid var(--line);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.04);
     }
-    @media (min-width: 900px){
-      .card.half{grid-column: span 6}
-      .card.third{grid-column: span 4}
-    }
-
-    .card h2{
+    .card h3{
       margin:0 0 10px;
-      font-size:24px;
-      letter-spacing:-.01em;
-    }
-    .small{
-      color:var(--muted2);
       font-size:16px;
-      line-height:1.6;
     }
+    .card p{margin:0; color:var(--muted); font-size:14px; line-height:1.65}
+    .card ul{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:14px; line-height:1.65}
+    .card li{margin:6px 0}
 
-    /* Skill chips */
-    .chips{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background: rgba(255,255,255,.05);
-      font-size:16px;
-      color:var(--muted);
-    }
+    .full{grid-column: span 12}
 
-    /* Projects */
-    .proj{
+    .project{
       display:grid;
+      grid-template-columns: 1fr;
       gap:12px;
-      margin-top:6px;
+      margin-top:10px;
     }
-    .proj-item{
+    .proj{
       padding:14px 14px;
       border:1px solid var(--line);
-      border-radius:16px;
-      background: rgba(0,0,0,.16);
+      border-radius:14px;
+      background:rgba(255,255,255,.03);
     }
-    .proj-title{
-      margin:0 0 6px;
-      font-size:19px;
+    .proj .title{
+      display:flex; align-items:baseline; justify-content:space-between; gap:10px;
+      margin-bottom:6px;
     }
-    .kv{margin:0;color:var(--muted);font-size:16px;line-height:1.55}
+    .proj b{font-size:14px}
+    .proj .tag{font-size:12px; color:var(--muted2)}
+    .proj .desc{font-size:14px; color:var(--muted); line-height:1.6}
+
     footer{
       margin-top:18px;
       color:var(--muted2);
-      font-size:14px;
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
     }
 
-    /* Notice */
-    .notice{
-      margin-top:12px;
-      padding:12px 14px;
-      border-radius:16px;
-      border:1px dashed rgba(255,255,255,.22);
-      background: rgba(0,0,0,.12);
-      color: var(--muted);
-      font-size:16px;
-      line-height:1.6;
+    /* responsive */
+    @media (max-width: 900px){
+      header{grid-template-columns:1fr}
+      .card{grid-column: span 12}
+      h1{font-size:28px}
     }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
-    <div class="badge">
-      <span class="dot"></span>
-      <span>Available for global opportunities · 해외/국내 프로젝트 협업 가능</span>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="badge"><span class="dot"></span> Available for global opportunities · 글로벌 협업 가능</div>
+      <div class="badge">Updated: <span id="ts"></span></div>
     </div>
 
-    <section class="hero">
-      <!-- Left -->
-      <div>
-        <h1>LEE's Technology<br><span style="font-size:.62em; color:var(--muted)">이 기술 포트폴리오</span></h1>
+    <header>
+      <section class="hero">
+        <h1>LEE’s Technology</h1>
+        <p class="sub"><b>Electrical Systems</b> · Automation · Practical Problem Solving</p>
+        <p class="kren">전기 시스템 · 자동화 · 현장 문제 해결</p>
 
-        <p class="subtitle">
-          Electrical Systems · Automation · Practical Problem Solving<br>
-          전기 시스템 · 자동화 · 현장 문제 해결
+        <p class="sub" style="margin-top:14px">
+          I build reliable electrical/automation solutions based on real field experience.
+        </p>
+        <p class="kren">
+          현장 경험을 바탕으로, 안전하고 신뢰성 있는 전기·자동화 솔루션을 구현합니다.
         </p>
 
-        <p class="lead">
-          I build reliable automation and electrical systems based on real-world field experience.<br>
-          현장 경험을 바탕으로 <b>신뢰할 수 있는 전기·자동화 시스템</b>을 구축합니다.
-        </p>
-
-        <div class="btns">
-          <!-- 링크는 필요하면 바꿔도 됨 -->
-          <a class="btn primary" href="#projects">Explore Projects · 프로젝트 보기 →</a>
-          <a class="btn" href="mailto:you@example.com">Email · 이메일</a>
-          <a class="btn" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener">GitHub · 깃허브</a>
-          <a class="btn" href="#" onclick="alert('LinkedIn 링크를 넣을 수 있어요 😊'); return false;">LinkedIn · 링크드인</a>
+        <div class="cta">
+          <a class="btn primary" href="#projects">Explore Projects <span class="mini">프로젝트</span></a>
+          <a class="btn" href="mailto:your@email.com">Email <span class="mini">이메일</span></a>
+          <a class="btn" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener">GitHub <span class="mini">깃허브</span></a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn <span class="mini">링크드인</span></a>
         </div>
 
-        <div class="notice">
-          💡 Tip: 위 Email 주소(<b>you@example.com</b>)를 성규님 실제 이메일로 바꾸면 바로 사용 가능합니다.
-        </div>
-      </div>
-
-      <!-- Right -->
-      <div class="card">
-        <h2>Focus · 핵심 가치</h2>
-        <p class="small">
-          Reliability, Safety, Efficiency, and clear technical communication.<br>
-          신뢰성 · 안전 · 효율 · 명확한 기술 커뮤니케이션
+        <p class="kren" style="margin-top:14px">
+          Focus: reliability · safety · efficiency · clear documentation<br/>
+          핵심: 신뢰성 · 안전 · 효율 · 문서화/커뮤니케이션
         </p>
-        <div class="chips" style="margin-top:10px">
-          <span class="chip">Reliability · 신뢰성</span>
-          <span class="chip">Safety · 안전</span>
-          <span class="chip">Efficiency · 효율</span>
-          <span class="chip">RCA · 고장원인분석</span>
-          <span class="chip">Documentation · 문서화</span>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="grid">
-      <div class="card half">
-        <h2>About · 소개</h2>
-        <p class="small">
-          I am an electrical technician with hands-on experience in electrical systems, automation, and operational problem solving.<br>
-          저는 전기 시스템·자동화·현장 문제 해결을 중심으로 실무 경험을 쌓아온 전기 기술자입니다.
-        </p>
-        <p class="small">
-          Today, I focus on turning complex technical problems into practical solutions that work in real operations.<br>
-          현재는 복잡한 기술 문제를 <b>현장에서 바로 작동하는 실용적 해결책</b>으로 바꾸는 데 집중합니다.
-        </p>
-      </div>
-
-      <div class="card half">
+      <aside class="side">
         <h2>Core Skills · 핵심 역량</h2>
         <div class="chips">
-          <span class="chip">Electrical Systems & Facilities · 전기설비</span>
-          <span class="chip">Industrial / Process Automation · 자동화</span>
-          <span class="chip">Troubleshooting (RCA) · 트러블슈팅</span>
-          <span class="chip">Reliability & Safety · 신뢰성/안전</span>
+          <span class="chip">Electrical Facilities · 전기설비</span>
+          <span class="chip">Industrial Automation · 공장자동화</span>
+          <span class="chip">Troubleshooting (RCA) · 원인분석</span>
+          <span class="chip">Preventive Maintenance · 예방정비</span>
           <span class="chip">Technical Documentation · 기술문서</span>
-          <span class="chip">Cross-team Communication · 협업</span>
+          <span class="chip">Safety & Compliance · 안전/규정</span>
         </div>
-        <p class="small" style="margin-top:10px">
-          Certifications / specific tools can be added later without redesign.<br>
-          자격증/툴은 나중에 추가해도 구조가 깨지지 않도록 만들었습니다.
+
+        <div style="margin-top:16px; border-top:1px solid var(--line); padding-top:14px;">
+          <h2 style="margin-bottom:10px">Quick Notes</h2>
+          <p style="margin:0; font-size:13px; color:var(--muted); line-height:1.6">
+            Simple, clean, and easy to read.  
+            Clear KR/EN for Korean and global visitors.
+          </p>
+          <p style="margin:8px 0 0; font-size:13px; color:var(--muted2); line-height:1.6">
+            심플하고 가독성 중심.  
+            한국/해외 방문자 모두 직관적으로 이해하도록 구성.
+          </p>
+        </div>
+      </aside>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <h3>About · 소개</h3>
+        <p>
+          Electrical technician with hands-on experience in electrical systems, automation, and operations problem solving.
+        </p>
+        <p style="margin-top:10px">
+          전기 시스템/자동화/운영 현장에서의 문제 해결 경험을 바탕으로, 실제로 “돌아가는” 솔루션을 만듭니다.
         </p>
       </div>
 
-      <div class="card" id="projects">
-        <h2>Projects (Starter) · 프로젝트(초안)</h2>
-        <p class="small">Keep it simple. One strong project beats five vague ones. · 하나의 강한 프로젝트가 다섯 개의 애매한 것보다 낫습니다.</p>
+      <div class="card">
+        <h3>What I deliver · 제공 가치</h3>
+        <ul>
+          <li>Root-cause analysis and practical fixes (RCA) · 원인분석 기반 개선</li>
+          <li>Stable automation workflows · 안정적인 자동화 프로세스</li>
+          <li>Safety-first operation · 안전 최우선</li>
+          <li>Clear documentation / handover · 문서화/인수인계</li>
+        </ul>
+      </div>
 
-        <div class="proj">
-          <div class="proj-item">
-            <h3 class="proj-title">Project 01 — Automation / Electrical Systems · 자동화/전기 시스템</h3>
-            <p class="kv"><b>Problem · 문제</b>: Repeated operational inefficiencies and manual intervention.<br>반복되는 비효율과 수동 개입</p>
-            <p class="kv"><b>Solution · 해결</b>: Structured automation approach and standardization.<br>구조화된 자동화 접근과 표준화</p>
-            <p class="kv"><b>Result · 결과</b>: Improved reliability, fewer errors, clearer workflows.<br>신뢰성 향상, 오류 감소, 작업 흐름 명확화</p>
+      <div class="card full" id="projects">
+        <h3>Projects (Starter) · 프로젝트</h3>
+        <p>Keep it simple: one strong project beats five vague ones. · 하나의 강한 프로젝트가 다섯 개의 애매한 것보다 좋습니다.</p>
+
+        <div class="project">
+          <div class="proj">
+            <div class="title">
+              <b>Project 01 — Automation / Electrical Systems</b>
+              <span class="tag">Starter · 예시</span>
+            </div>
+            <div class="desc">
+              <b>Problem:</b> Repeated operational inefficiencies and manual intervention.<br/>
+              <b>Solution:</b> Designed and implemented a structured automation approach.<br/>
+              <b>Result:</b> Improved reliability, reduced manual errors, clearer workflows.
+              <br/><br/>
+              <b>문제:</b> 반복되는 비효율/수동 개입<br/>
+              <b>해결:</b> 구조화된 자동화 접근 설계/적용<br/>
+              <b>결과:</b> 신뢰성 향상, 수동 오류 감소, 작업흐름 명확화
+            </div>
           </div>
 
-          <div class="proj-item">
-            <h3 class="proj-title">Project 02 — Maintenance Improvement · 유지보수 개선</h3>
-            <p class="kv"><b>Problem · 문제</b>: Downtime due to unclear failure patterns.<br>고장 패턴이 불명확해 다운타임 발생</p>
-            <p class="kv"><b>Solution · 해결</b>: RCA + preventive checks + documentation.<br>원인분석 + 예방점검 + 문서화</p>
-            <p class="kv"><b>Result · 결과</b>: Faster recovery and better communication.<br>복구 시간 단축 및 커뮤니케이션 개선</p>
+          <div class="proj">
+            <div class="title">
+              <b>Project 02 — Preventive Maintenance Playbook</b>
+              <span class="tag">Add later · 추후 추가</span>
+            </div>
+            <div class="desc">
+              Create a PM checklist + SOP to reduce downtime.
+              <br/>
+              예방정비 체크리스트와 표준작업서를 만들어 다운타임을 줄이는 프로젝트.
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="card third">
-        <h2>Contact · 연락</h2>
-        <p class="small">
-          Email: <b>you@example.com</b><br>
-          이메일 주소를 실제 주소로 바꾸면 됩니다.
-        </p>
-      </div>
-
-      <div class="card third">
-        <h2>Links · 링크</h2>
-        <p class="small">
-          GitHub: supersungkyu-create<br>
-          LinkedIn: (추가 예정)
-        </p>
-      </div>
-
-      <div class="card third">
-        <h2>Next · 다음</h2>
-        <p class="small">
-          ✅ 자격증/경력/사진/프로젝트 실사례를 추가해 “완성 포트폴리오”로 업그레이드할 수 있어요.
-        </p>
       </div>
     </section>
 
     <footer>
-      © <span id="y"></span> LEE's Technology · 이 기술 포트폴리오
+      <div>© <span id="yy"></span> LEE’s Technology</div>
+      <div>Built with plain HTML · 단일 HTML 파일</div>
     </footer>
-  </main>
+  </div>
 
   <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
+    // visible but subtle timestamp
+    const d = new Date();
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById("yy").textContent = d.getFullYear();
+    document.getElementById("ts").textContent =
+      `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
   </script>
 </body>
 </html>
