@@ -656,7 +656,7 @@
 
     // ✅ mailto 전송
     function sendMail(){
-      const to = "REPLACE_ME@email.com"; // 성규님 이메일로 변경
+      const to = "supersungkyu@gmail.com"; // 성규님 이메일로 변경
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const subject = document.getElementById("subject").value.trim();
@@ -676,3 +676,70 @@
   </script>
 </body>
 </html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- ✅ SEO 기본 -->
+  <title>LEE’s Technology | Aviation Avionics · Documentation · Global</title>
+  <meta name="description" content="Aviation Avionics 중심의 문제 해결(RCA)·문서화·표준 템플릿. 글로벌 원격 협업을 위한 실전 포트폴리오." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- OG -->
+  <meta property="og:title" content="LEE’s Technology" />
+  <meta property="og:description" content="Aviation Avionics · Documentation · Global collaboration" />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root{
+      --bg0:#070b14;
+      --bg1:#0b1222;
+      --card: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.56);
+      --accent:#6ee7ff;
+      --accent2:#a78bfa;
+      --ok:#34d399;
+      --warn:#fbbf24;
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
+      background:
+        radial-gradient(900px 520px at 18% 12%, rgba(110,231,255,.18), transparent 60%),
+        radial-gradient(760px 520px at 82% 18%, rgba(167,139,250,.16), transparent 58%),
+        radial-gradient(900px 650px at 50% 85%, rgba(52,211,153,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:34px 18px 72px}
+
+    /* Top nav (sticky) */
+    .topnav{
+      position: sticky; top: 12px; z-index: 50;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:10px 12px;
+      margin: 0 auto 18px;
+      max-width: var(--max);
+      background: rgba(7, 16, 28, .55);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.30);
+    }
+    .nav-left{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      padding:6px 10px;
+
