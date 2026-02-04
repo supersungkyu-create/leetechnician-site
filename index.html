@@ -1,27 +1,25 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <!-- ✅ SEO 기본: 아래 3개는 꼭 성규님께 맞게 수정하세요 -->
-  <title>LEE’s Technology | 전기 · 항공전기전자 · 금융 인사이트</title>
-  <meta name="description" content="전기 시스템·자동화·항공전기전자·금융 인사이트. 현장 기반 문제 해결(RCA)과 명확한 문서화로 신뢰를 만듭니다." />
+  <title>LEE’s Technology | Avionics Documentation · SME Review · Remote</title>
+  <meta name="description" content="Remote-ready avionics documentation: checklists, handover templates, 1-page job aids, and SME review. Built for global collaboration." />
   <meta name="robots" content="index,follow" />
 
-  <!-- OG -->
+  <!-- Open Graph -->
   <meta property="og:title" content="LEE’s Technology" />
-  <meta property="og:description" content="전기 · 항공전기전자 · 금융 인사이트 | 글로벌 협업 가능" />
+  <meta property="og:description" content="Avionics Documentation · SME Review · Remote Collaboration" />
   <meta property="og:type" content="website" />
 
   <style>
     :root{
-      --bg0:#070b14;
-      --bg1:#0b1222;
-      --card: rgba(255,255,255,.06);
+      --bg0:#060a13;
+      --bg1:#0a1020;
       --line: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
+      --muted: rgba(255,255,255,.70);
       --muted2: rgba(255,255,255,.56);
       --accent:#6ee7ff;
       --accent2:#a78bfa;
@@ -29,25 +27,28 @@
       --warn:#fbbf24;
       --radius: 18px;
       --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --shadow2: 0 10px 30px rgba(0,0,0,.35);
       --max: 1120px;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
       color:var(--text);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
       background:
-        radial-gradient(900px 520px at 18% 12%, rgba(110,231,255,.18), transparent 60%),
-        radial-gradient(760px 520px at 82% 18%, rgba(167,139,250,.16), transparent 58%),
+        radial-gradient(900px 520px at 18% 12%, rgba(110,231,255,.16), transparent 60%),
+        radial-gradient(760px 520px at 82% 18%, rgba(167,139,250,.14), transparent 58%),
         radial-gradient(900px 650px at 50% 85%, rgba(52,211,153,.10), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       overflow-x:hidden;
     }
+
     a{color:inherit}
     .wrap{max-width:var(--max); margin:0 auto; padding:34px 18px 72px}
 
-    /* Top nav (sticky) */
+    /* top nav */
     .topnav{
       position: sticky; top: 12px; z-index: 50;
       display:flex; align-items:center; justify-content:space-between; gap:12px;
@@ -68,7 +69,7 @@
       border-radius: 999px;
       background: rgba(255,255,255,.04);
       text-decoration:none;
-      font-weight:700;
+      font-weight:800;
       letter-spacing:-.2px;
     }
     .brand .logo{
@@ -101,36 +102,43 @@
     }
     .dot{width:10px;height:10px;border-radius:50%; background: rgba(52,211,153,.95); box-shadow: 0 0 14px rgba(52,211,153,.35)}
 
-    /* Layout */
+    /* layout */
     .grid{display:grid; gap:18px}
-    .grid-2{grid-template-columns: 1.35fr .95fr}
+    .grid-2{grid-template-columns: 1.4fr .9fr}
     .grid-2b{grid-template-columns: 1fr 1fr}
     @media (max-width: 980px){
       .grid-2,.grid-2b{grid-template-columns:1fr}
       .topnav{top:8px}
     }
 
-    /* 3D glass card */
+    /* card */
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.028));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
-      padding: 18px 18px;
+      padding: 18px;
       position:relative;
       transform: perspective(1100px) translateZ(0);
+      overflow:hidden;
     }
-    .card:before{
+    .card::before{
       content:"";
       position:absolute; inset:-1px;
       border-radius: var(--radius);
-      background: radial-gradient(600px 220px at 18% 12%, rgba(110,231,255,.18), transparent 55%),
-                  radial-gradient(600px 240px at 86% 20%, rgba(167,139,250,.16), transparent 55%);
+      background:
+        radial-gradient(600px 240px at 18% 12%, rgba(110,231,255,.18), transparent 55%),
+        radial-gradient(640px 260px at 86% 18%, rgba(167,139,250,.16), transparent 55%),
+        radial-gradient(520px 260px at 50% 120%, rgba(52,211,153,.12), transparent 55%);
       opacity:.55;
-      pointer-events:none;
+      pointer-events:none !important; /* ✅ critical: never block clicks */
       mask: linear-gradient(#000, transparent 78%);
     }
+
+    /* ✅ ensure clickable elements always above overlays */
+    a, button, .btn, .btns, input, textarea, label { position: relative; z-index: 5; }
+
     @media (hover:hover){
       .card:hover{
         transform: perspective(1100px) rotateX(2deg) rotateY(-3deg) translateY(-2px);
@@ -138,27 +146,34 @@
       }
     }
 
-    /* Typography */
-    h1{margin:0 0 8px; font-size: 42px; letter-spacing:-.6px}
-    h2{margin:0 0 10px; font-size: 18px; color:var(--muted); font-weight:650}
+    /* typography */
+    h1{margin:0 0 10px; font-size: 44px; letter-spacing:-.8px}
+    h2{margin:0 0 10px; font-size: 18px; color:var(--muted); font-weight:700}
     h3{margin:0 0 10px; font-size: 16px; color:rgba(255,255,255,.88)}
-    p{margin:10px 0; color:var(--muted); line-height:1.65}
+    p{margin:10px 0; color:var(--muted); line-height:1.7}
     .kicker{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 12px;
       border:1px solid var(--line);
       border-radius:999px;
       background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.78);
+      color: rgba(255,255,255,.80);
       font-size: 13px;
       margin-bottom:14px;
     }
     .subtitle{font-size:14px; color:rgba(255,255,255,.78)}
     .small{font-size:13px; color:var(--muted2)}
+    .muted2{color:var(--muted2)}
     .hr{height:1px; background: var(--line); margin:14px 0}
-    .muted2{color: var(--muted2)}
 
-    /* Buttons / pills */
+    /* hero headline gradient */
+    .headline{
+      background: linear-gradient(90deg, rgba(110,231,255,.95), rgba(167,139,250,.92), rgba(52,211,153,.92));
+      -webkit-background-clip:text; background-clip:text;
+      color: transparent;
+    }
+
+    /* buttons */
     .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .btn{
       display:inline-flex; align-items:center; gap:8px;
@@ -167,27 +182,33 @@
       border:1px solid var(--line);
       background: rgba(255,255,255,.05);
       text-decoration:none;
-      color: rgba(255,255,255,.90);
+      color: rgba(255,255,255,.92);
       font-size: 14px;
+      cursor:pointer;
+      box-shadow: var(--shadow2);
     }
     .btn.primary{
       background: linear-gradient(135deg, rgba(110,231,255,.22), rgba(167,139,250,.20));
       border-color: rgba(255,255,255,.14);
     }
+    .btn.ghost{
+      background: rgba(255,255,255,.03);
+      box-shadow: none;
+    }
+    .btn.small{padding:9px 10px; font-size:13px}
+
     .pill{
       display:inline-flex;
       padding:8px 10px;
       border-radius:999px;
       border:1px solid var(--line);
       background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.80);
+      color: rgba(255,255,255,.82);
       font-size: 13px;
       margin: 6px 8px 0 0;
     }
     .tag-ok{border-color: rgba(52,211,153,.35); background: rgba(52,211,153,.08)}
-    .tag-warn{border-color: rgba(251,191,36,.35); background: rgba(251,191,36,.08)}
 
-    /* Sections */
     section{scroll-margin-top: 90px}
     .section-title{
       display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
@@ -195,14 +216,26 @@
     }
     .section-title h2{margin:0}
     .section-title .meta{font-size:12px; color:var(--muted2)}
-    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.75}
+    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.8}
     .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
     @media (max-width: 720px){ .two-col{grid-template-columns:1fr} }
 
-    /* Form */
-    .form{
-      display:grid; gap:10px;
+    /* metrics */
+    .metrics{
+      display:grid; grid-template-columns: repeat(3,1fr); gap:12px;
+      margin-top:12px;
     }
+    .metric{
+      border:1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      padding:12px;
+    }
+    .metric b{font-size:18px}
+    @media (max-width: 720px){ .metrics{grid-template-columns:1fr} }
+
+    /* form */
+    .form{display:grid; gap:10px;}
     .inp, .txt{
       width:100%;
       padding:11px 12px;
@@ -212,11 +245,9 @@
       color: var(--text);
       outline:none;
     }
-    .txt{min-height:110px; resize:vertical}
-    .note{
-      font-size:12px; color: var(--muted2);
-      margin-top:6px;
-    }
+    .txt{min-height:120px; resize:vertical}
+    .note{font-size:12px; color: var(--muted2); margin-top:6px;}
+    .linkline a{ text-decoration: underline; }
 
     footer{
       margin-top: 20px;
@@ -226,22 +257,33 @@
       font-size: 12px;
       display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
     }
+
+    /* subtle motion */
+    @media (prefers-reduced-motion: no-preference){
+      .floaty{
+        animation: floaty 6s ease-in-out infinite;
+      }
+      @keyframes floaty{
+        0%,100%{transform: translateY(0)}
+        50%{transform: translateY(-4px)}
+      }
+    }
   </style>
 
-  <!-- ✅ 구조화 데이터(리크루터/검색엔진용) - 이름/링크만 바꾸면 됨 -->
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Person",
     "name":"LEE",
     "url":"https://lsk690vip.com",
-    "jobTitle":"Electrical / Automation Technician",
+    "jobTitle":"Avionics Documentation · SME Review (Remote)",
+    "email":"mailto:supersungkyu@gmail.com",
+    "telephone":"+82-10-2625-3406",
     "knowsAbout":[
-      "Electrical Facilities","Industrial Automation","Troubleshooting","Preventive Maintenance","Technical Documentation","Safety & Compliance",
-      "Aircraft Electrical/Electronics","Avionics (basic)","Financial Insights"
+      "Avionics Maintenance","Troubleshooting (RCA)","Technical Documentation","Shift Handover","Checklists","Safety & Compliance"
     ],
     "sameAs":[
-      "https://www.linkedin.com/in/REPLACE_ME",
       "https://github.com/supersungkyu-create"
     ]
   }
@@ -256,373 +298,276 @@
         <span class="logo"></span>
         <span>LEE’s Technology</span>
       </a>
-      <span class="mini"><span class="dot"></span>Available for global opportunities · 글로벌 협업 가능</span>
+      <span class="mini"><span class="dot"></span>Open to remote / contract · Global</span>
     </div>
 
     <div class="nav-links" aria-label="Primary">
-      <a href="#electrical">전기기술</a>
-      <a href="#aviation">항공전기·전자</a>
-      <a href="#finance">금융 인사이트</a>
-      <a href="#recruiters">채용/리크루터</a>
-      <a href="#ads">광고/협업</a>
-      <a href="#contact">문의</a>
+      <a href="#services">Services</a>
+      <a href="#samples">Samples</a>
+      <a href="#official">Official Contacts</a>
+      <a href="#contact">Contact</a>
     </div>
 
     <div class="nav-right">
-      <span class="mini">Updated: <span id="updated">2026-02-03 15:18 (KST)</span></span>
+      <span class="mini">Updated: <span id="updated">2026-02-04 00:00 (KST)</span></span>
     </div>
   </div>
 
   <main id="top" class="wrap">
     <!-- HERO -->
     <div class="grid grid-2">
-      <header class="card">
-        <div class="kicker">Electrical Systems · Automation · Practical Problem Solving</div>
-        <h1>현장 기반 문제 해결자</h1>
-        <div class="subtitle">전기 · 자동화 · (확장) 항공전기전자 · 금융 인사이트</div>
+      <header class="card floaty">
+        <div class="kicker">Avionics · Documentation · SME Review · Remote Delivery</div>
+
+        <h1 class="headline">Field experience → reusable documentation</h1>
+        <div class="subtitle">
+          Practical checklists · shift handover templates · 1-page job aids · clear defect reporting
+        </div>
 
         <p>
-          신뢰성과 안전을 기준으로, <b>원인분석(RCA)</b> → <b>실행 가능한 개선</b> → <b>명확한 문서화/인수인계</b>까지
-          “끝까지 책임지는” 방식으로 일합니다.
+          I convert real maintenance thinking into <b>remote-ready deliverables</b>.
+          The focus is not “pretty writing”, but <b>repeatable, audit-friendly</b> documents your team can reuse.
         </p>
 
         <div class="btns">
-          <!-- ✅ 버튼 링크만 성규님 것으로 바꾸세요 -->
-          <a class="btn primary" href="#projects">Explore Projects · 프로젝트</a>
-          <a class="btn" href="mailto:REPLACE_ME@email.com">Email · 이메일</a>
-          <a class="btn" href="https://github.com/supersungkyu-create/leetechnician-site" target="_blank" rel="noopener">GitHub · 깃허브</a>
-          <a class="btn" href="https://www.linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener">LinkedIn · 링크드인</a>
+          <a class="btn primary" href="#samples">View Samples</a>
+          <a class="btn" href="mailto:supersungkyu@gmail.com">Email</a>
+          <a class="btn" href="tel:+821026253406">Call</a>
+          <a class="btn ghost" href="https://github.com/supersungkyu-create/leetechnician-site" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
 
+        <p class="small linkline" style="margin-top:10px">
+          Email: <a href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
+          &nbsp;·&nbsp;
+          Phone: <a href="tel:+821026253406">+82 10-2625-3406</a>
+        </p>
+
         <div class="hr"></div>
-        <div class="small">Focus: reliability · safety · efficiency · clear documentation</div>
+
+        <div class="metrics">
+          <div class="metric">
+            <b>Remote-ready</b>
+            <div class="small">PDF / Doc / Notion</div>
+          </div>
+          <div class="metric">
+            <b>Fast iteration</b>
+            <div class="small">Draft → review → delivery</div>
+          </div>
+          <div class="metric">
+            <b>Clarity first</b>
+            <div class="small">Short, standard phrasing</div>
+          </div>
+        </div>
       </header>
 
       <aside class="card">
         <div class="section-title">
-          <h2>Core Skills · 핵심 역량</h2>
-          <div class="meta">Search-friendly keywords included</div>
+          <h2>Core Keywords</h2>
+          <div class="meta">search-friendly</div>
         </div>
 
         <div>
-          <span class="pill">Electrical Facilities · 전기설비</span>
-          <span class="pill">Industrial Automation · 공장자동화</span>
-          <span class="pill">Troubleshooting (RCA) · 원인분석</span>
-          <span class="pill">Preventive Maintenance · 예방정비</span>
-          <span class="pill">Technical Documentation · 기술문서</span>
-          <span class="pill">Safety & Compliance · 안전/규정</span>
+          <span class="pill">Avionics Maintenance</span>
+          <span class="pill">Troubleshooting (RCA)</span>
+          <span class="pill">Shift Handover</span>
+          <span class="pill">Checklists / SOP</span>
+          <span class="pill">Defect Reporting</span>
+          <span class="pill">Safety & Compliance</span>
+          <span class="pill tag-ok">Remote Contract</span>
         </div>
 
         <div class="hr"></div>
 
-        <h3>Quick Notes</h3>
+        <h3>How I work</h3>
         <p class="muted2">
-          심플·모던·가독성 중심. 한국/글로벌 방문자 모두가 직관적으로 이해하도록 구성합니다.
-          <br/>확장은 “섹션 → 페이지 → 결제/주문 시스템” 순서로 진행합니다.
+          I do not publish sensitive aircraft/operator details.  
+          I provide <b>generalized templates</b> and <b>structured writing</b> suitable for international teams.
         </p>
 
         <div class="hr"></div>
+
         <div class="small">
-          ✅ 지금 상태: <span class="pill tag-ok">도메인 연결 완료</span>
-          <span class="pill tag-ok">Cloudflare Pages 배포</span>
+          ✅ Ready:
+          <span class="pill tag-ok">Clickable links verified</span>
+          <span class="pill tag-ok">Single-file site</span>
         </div>
       </aside>
     </div>
 
-    <!-- ABOUT / VALUE -->
-    <div class="grid grid-2b" style="margin-top:18px">
-      <section class="card" aria-label="About">
-        <div class="section-title">
-          <h2>About · 소개</h2>
-          <div class="meta">KR/EN short</div>
-        </div>
-        <p>
-          전기 시스템/자동화/운영 현장에서의 문제 해결 경험을 바탕으로, 실제로 “돌아가는” 솔루션을 만듭니다.
-        </p>
-        <p class="muted2">
-          Electrical technician with hands-on experience in electrical systems, automation, and practical operations problem solving.
-        </p>
-
-        <div class="hr"></div>
-        <div class="two-col">
-          <div>
-            <h3>Credentials · 자격</h3>
-            <div class="pill">전기산업기사</div>
-            <div class="pill">전기공사산업기사</div>
-            <div class="pill">경력 24년+</div>
-          </div>
-          <div>
-            <h3>Work Style · 일 방식</h3>
-            <div class="pill">현장 기반</div>
-            <div class="pill">안전/규정 우선</div>
-            <div class="pill">문서화/인수인계</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card" aria-label="Value">
-        <div class="section-title">
-          <h2>What I deliver · 제공 가치</h2>
-          <div class="meta">clear outcomes</div>
-        </div>
-        <ul class="list">
-          <li>Root-cause analysis & practical fixes (RCA) · 원인분석 기반 개선</li>
-          <li>Stable automation workflows · 안정적인 자동화 프로세스</li>
-          <li>Safety-first operation · 안전 최우선</li>
-          <li>Clear documentation / handover · 문서화/인수인계</li>
-        </ul>
-
-        <div class="hr"></div>
-        <div class="small">
-          추천 흐름: <span class="pill tag-warn">문제 정의</span> →
-          <span class="pill tag-warn">현장/데이터 확인</span> →
-          <span class="pill tag-warn">원인분석</span> →
-          <span class="pill tag-warn">개선안/검증</span> →
-          <span class="pill tag-warn">문서화</span>
-        </div>
-      </section>
-    </div>
-
-    <!-- ELECTRICAL -->
-    <section id="electrical" class="card" style="margin-top:18px">
+    <!-- SERVICES -->
+    <section id="services" class="card" style="margin-top:18px">
       <div class="section-title">
-        <h2>전기기술 · Electrical</h2>
-        <div class="meta">서비스/콘텐츠 확장 포인트</div>
+        <h2>Services</h2>
+        <div class="meta">what you can buy</div>
       </div>
-      <p>
-        설비/배전/제어/트러블슈팅 중심으로, “증상”이 아니라 “원인”을 잡아 재발을 줄입니다.
-      </p>
+
       <div class="two-col">
         <div>
-          <h3>가능 영역</h3>
-          <div class="pill">배전/설비 점검</div>
-          <div class="pill">RCA 보고서</div>
-          <div class="pill">예방정비 체크리스트</div>
-          <div class="pill">표준 작업절차(SOP)</div>
-        </div>
-        <div>
-          <h3>산출물 예시</h3>
+          <h3>1) SME Review (Avionics)</h3>
           <ul class="list">
-            <li>점검표/측정 기록 템플릿</li>
-            <li>원인-대책 매트릭스</li>
-            <li>안전/규정 준수 체크</li>
+            <li>Technical accuracy check</li>
+            <li>Field realism (what operators actually need)</li>
+            <li>Consistency of terms and steps</li>
+          </ul>
+
+          <div class="hr"></div>
+
+          <h3>2) Template Pack (Reusable)</h3>
+          <ul class="list">
+            <li>Shift handover template (EN)</li>
+            <li>Troubleshooting checklist (RCA flow)</li>
+            <li>Defect report template (clear wording)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>3) 1-page Job Aid</h3>
+          <ul class="list">
+            <li>Manual/procedure → field-ready 1 page</li>
+            <li>Short steps, verification points, cautions</li>
+            <li>Delivery in PDF/Doc/Notion</li>
+          </ul>
+
+          <div class="hr"></div>
+
+          <h3>Typical process</h3>
+          <ul class="list">
+            <li>Intake (scope & constraints)</li>
+            <li>Draft v1</li>
+            <li>1 review round</li>
+            <li>Final delivery</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- AVIATION -->
-    <section id="aviation" class="card" style="margin-top:18px">
+    <!-- SAMPLES -->
+    <section id="samples" class="card" style="margin-top:18px">
       <div class="section-title">
-        <h2>항공전기·전자 · Aviation Electrical/Electronics</h2>
-        <div class="meta">Recruiter-friendly keywords</div>
-      </div>
-      <p>
-        항공 분야는 이 섹션에서 키워드/프로필을 강화해 “국제 리크루터 검색”에 걸리게 만듭니다.
-        (추후 영문 전용 페이지로 분리 가능)
-      </p>
-      <div>
-        <span class="pill">Aircraft Electrical</span>
-        <span class="pill">Avionics (basic)</span>
-        <span class="pill">Maintenance</span>
-        <span class="pill">Compliance</span>
-        <span class="pill">Safety</span>
-        <span class="pill">Troubleshooting</span>
-      </div>
-      <div class="hr"></div>
-      <p class="muted2">
-        ✅ 여기는 성규님 실제 경력/스펙에 맞춰 문구를 “팩트 기반”으로만 정리해야 합니다.  
-        (다음 단계에서 딱 1개씩 확정하며 반영)
-      </p>
-    </section>
-
-    <!-- FINANCE -->
-    <section id="finance" class="card" style="margin-top:18px">
-      <div class="section-title">
-        <h2>금융 지식 & 인사이트 · Finance Insights</h2>
-        <div class="meta">콘텐츠 → 트래픽 → 수익화</div>
-      </div>
-      <p>
-        금융 인사이트는 “신뢰를 만드는 콘텐츠”로 운영합니다.  
-        (추후: 리포트 판매/구독/광고 패키지로 연결)
-      </p>
-      <div class="two-col">
-        <div>
-          <h3>콘텐츠 예시</h3>
-          <ul class="list">
-            <li>시장 구조/리스크 관리 기초</li>
-            <li>실전 체크리스트(수수료/손절/분산)</li>
-            <li>사례 기반 인사이트(짧고 명확하게)</li>
-          </ul>
-        </div>
-        <div>
-          <h3>향후 수익화</h3>
-          <div class="pill">PDF 리포트</div>
-          <div class="pill">구독(월간)</div>
-          <div class="pill">스폰서 글</div>
-          <div class="pill">배너 광고</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="card" style="margin-top:18px">
-      <div class="section-title">
-        <h2>Projects (Starter) · 프로젝트</h2>
-        <div class="meta">하나를 강하게</div>
-      </div>
-      <p class="muted2">하나의 강한 프로젝트가 다섯 개의 애매한 것보다 좋습니다.</p>
-
-      <div class="grid grid-2b" style="margin-top:10px">
-        <div class="card" style="box-shadow:none">
-          <h3>Project 01 · 현장 트러블 RCA</h3>
-          <p class="muted2">문제 → 원인분석 → 개선 → 재발방지 문서화</p>
-          <div class="pill">RCA</div><div class="pill">Checklist</div><div class="pill">SOP</div>
-          <div class="btns">
-            <a class="btn" href="#" onclick="alert('링크 자리입니다. GitHub/문서/노션 등 연결하세요.'); return false;">Details</a>
-          </div>
-        </div>
-
-        <div class="card" style="box-shadow:none">
-          <h3>Project 02 · 자동화 안정화</h3>
-          <p class="muted2">불안정/오동작 구간 제거, 운영 안정성 향상</p>
-          <div class="pill">Automation</div><div class="pill">Stability</div><div class="pill">Safety</div>
-          <div class="btns">
-            <a class="btn" href="#" onclick="alert('링크 자리입니다.'); return false;">Details</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- RECRUITERS -->
-    <section id="recruiters" class="card" style="margin-top:18px">
-      <div class="section-title">
-        <h2>Recruiters · 채용/리크루터</h2>
-        <div class="meta">international search</div>
-      </div>
-
-      <p>
-        Recruiters: I’m open to global opportunities.  
-        Please review my core capabilities and reach out via email/LinkedIn.
-      </p>
-
-      <div class="two-col">
-        <div>
-          <h3>Keywords</h3>
-          <div class="pill">Electrical Technician</div>
-          <div class="pill">Industrial Automation</div>
-          <div class="pill">Troubleshooting</div>
-          <div class="pill">Maintenance</div>
-          <div class="pill">Compliance</div>
-          <div class="pill">Documentation</div>
-        </div>
-        <div>
-          <h3>Links</h3>
-          <div class="btns">
-            <a class="btn primary" href="https://www.linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn" href="mailto:REPLACE_ME@email.com">Email</a>
-            <a class="btn" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener">GitHub</a>
-            <!-- 국제 구인 플랫폼 링크 자리 -->
-            <a class="btn" href="#" onclick="alert('국제 구인 플랫폼 링크(예: Indeed/Glassdoor/LinkedIn Jobs) 추가하세요.'); return false;">Job Profile</a>
-          </div>
-          <p class="note">✅ 여기에는 “팩트 기반 경력 요약(영문 6~8줄)”을 다음 단계에서 확정해 넣습니다.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ADS / PARTNERSHIP -->
-    <section id="ads" class="card" style="margin-top:18px">
-      <div class="section-title">
-        <h2>Ads & Partnership · 광고/협업</h2>
-        <div class="meta">패키지 → 인보이스/결제</div>
+        <h2>Samples</h2>
+        <div class="meta">public / sanitized</div>
       </div>
 
       <p class="muted2">
-        광고/협업은 “패키지 3종 + 결제 링크(또는 인보이스)”만 있으면 바로 수주 가능합니다.
-        아래는 템플릿입니다.
+        These are safe public versions (no aircraft/operator sensitive data). Replace the “Open” links with your files (PDF) when ready.
       </p>
 
       <div class="grid grid-2b" style="margin-top:10px">
         <div class="card" style="box-shadow:none">
-          <h3>Starter</h3>
-          <p class="muted2">배너 1개월 / 기본 노출</p>
-          <div class="pill tag-ok">₩ REPLACE</div>
+          <h3>Sample 01 · Shift Handover Template</h3>
+          <p class="muted2">A concise structure to reduce miscommunication during shifts.</p>
+          <div class="pill">Template</div><div class="pill">Quality</div><div class="pill">EN</div>
           <div class="btns">
-            <!-- ✅ Stripe/토스 결제 링크로 바꾸세요 -->
-            <a class="btn primary" href="REPLACE_PAYMENT_LINK_1" target="_blank" rel="noopener">Pay / 결제</a>
-            <a class="btn" href="#contact">문의</a>
+            <a class="btn small" href="#" onclick="alert('Link placeholder: set to /assets/sample-handover.pdf'); return false;">Open</a>
           </div>
         </div>
+
         <div class="card" style="box-shadow:none">
-          <h3>Standard</h3>
-          <p class="muted2">배너 + 스폰서 글 1건</p>
-          <div class="pill tag-ok">₩ REPLACE</div>
+          <h3>Sample 02 · Troubleshooting Checklist</h3>
+          <p class="muted2">RCA flow: power → ground → shielding → signal → connector.</p>
+          <div class="pill">Checklist</div><div class="pill">RCA</div><div class="pill">Avionics</div>
           <div class="btns">
-            <a class="btn primary" href="REPLACE_PAYMENT_LINK_2" target="_blank" rel="noopener">Pay / 결제</a>
-            <a class="btn" href="#contact">문의</a>
+            <a class="btn small" href="#" onclick="alert('Link placeholder: set to /assets/sample-checklist.pdf'); return false;">Open</a>
           </div>
         </div>
+
         <div class="card" style="box-shadow:none">
-          <h3>Premium</h3>
-          <p class="muted2">메인 노출 + 배너 + 스폰서 글</p>
-          <div class="pill tag-ok">₩ REPLACE</div>
+          <h3>Sample 03 · 1-page Job Aid</h3>
+          <p class="muted2">Manual/procedure summarized into one page with steps & checks.</p>
+          <div class="pill">Job Aid</div><div class="pill">Reusable</div><div class="pill">EN</div>
           <div class="btns">
-            <a class="btn primary" href="REPLACE_PAYMENT_LINK_3" target="_blank" rel="noopener">Pay / 결제</a>
-            <a class="btn" href="#contact">문의</a>
+            <a class="btn small" href="#" onclick="alert('Link placeholder: set to /assets/sample-jobaid.pdf'); return false;">Open</a>
           </div>
         </div>
+
         <div class="card" style="box-shadow:none">
-          <h3>Notes</h3>
+          <h3>What to do next</h3>
           <p class="muted2">
-            결제 링크가 없으면, “문의 → 인보이스 발행 → 결제” 방식으로도 가능.
-            (Stripe Invoice / 토스페이먼츠 결제링크 등)
+            Upload 1 PDF sample first. Then use the Official Contact links to reach out with a short proposal + your sample link.
           </p>
-          <div class="pill">Invoice</div><div class="pill">Payment Link</div><div class="pill">Sponsor</div>
+          <div class="pill">Proof</div><div class="pill">Pipeline</div><div class="pill">Remote</div>
         </div>
+      </div>
+    </section>
+
+    <!-- OFFICIAL CONTACT LINKS (SAFE) -->
+    <section id="official" class="card" style="margin-top:18px">
+      <div class="section-title">
+        <h2>Official Contact Links (Safe)</h2>
+        <div class="meta">official channels only</div>
+      </div>
+
+      <p class="muted2">
+        These links go to official contact pages (no scraping, no bulk emailing).
+      </p>
+
+      <div class="grid grid-2b" style="margin-top:10px">
+        <div class="card" style="box-shadow:none">
+          <h3>Sonovision</h3>
+          <p class="muted2">Technical Publications / S1000D ecosystem.</p>
+          <div class="btns">
+            <a class="btn primary" href="https://www.sonovisiongroup.com/about/contact/" target="_blank" rel="noopener noreferrer">Official Contact</a>
+            <a class="btn" href="https://www.sonovisionusa.com/" target="_blank" rel="noopener noreferrer">Website</a>
+          </div>
+          <p class="note">Suggested keywords: SME review / job aid / checklist conversion / remote contract</p>
+        </div>
+
+        <div class="card" style="box-shadow:none">
+          <h3>Dayton T. Brown (DTB)</h3>
+          <p class="muted2">Engineering services including technical publications.</p>
+          <div class="btns">
+            <a class="btn primary" href="https://www.dtb.com/contact/" target="_blank" rel="noopener noreferrer">Official Contact</a>
+            <a class="btn" href="https://www.dtb.com/services/technical-publications/" target="_blank" rel="noopener noreferrer">Tech Pubs</a>
+          </div>
+          <p class="note">Suggested keywords: documentation support / SME review / templates / remote contract</p>
+        </div>
+      </div>
+
+      <div class="hr"></div>
+      <div class="small">
+        Tip: keep outreach short. Send 1 sample link + 6 lines about deliverables and turnaround.
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact" class="card" style="margin-top:18px">
       <div class="section-title">
-        <h2>Contact · 문의</h2>
-        <div class="meta">빠르게 연결</div>
+        <h2>Contact</h2>
+        <div class="meta">direct</div>
       </div>
 
       <div class="grid grid-2b">
         <div>
-          <h3>빠른 문의</h3>
+          <h3>Quick Message (Email)</h3>
           <p class="muted2">
-            아래 폼은 “메일로 보내기” 방식입니다.  
-            (추후: 자동 저장/CRM/자동응답으로 고도화)
+            This uses <b>mailto</b> (no server needed). Your email app will open.
           </p>
 
-          <!-- mailto 폼: 서버 없이 작동 -->
           <form class="form" onsubmit="return sendMail();">
-            <input class="inp" id="name" placeholder="이름 / 회사" required />
-            <input class="inp" id="email" placeholder="이메일" type="email" required />
-            <input class="inp" id="subject" placeholder="제목" required />
-            <textarea class="txt" id="message" placeholder="문의 내용" required></textarea>
-            <button class="btn primary" type="submit">메일로 보내기</button>
-            <div class="note">※ 메일 앱이 열립니다. (성공/오류는 메일 앱 설정에 따라 다를 수 있음)</div>
+            <input class="inp" id="name" placeholder="Name / Company" required />
+            <input class="inp" id="email" placeholder="Email" type="email" required />
+            <input class="inp" id="subject" placeholder="Subject" required />
+            <textarea class="txt" id="message" placeholder="Message" required></textarea>
+            <button class="btn primary" type="submit">Send via Email</button>
+            <div class="note">If nothing happens, your browser/email client may block mailto. Use the direct buttons on the right.</div>
           </form>
         </div>
 
         <div>
           <h3>Direct</h3>
           <div class="btns">
-            <a class="btn primary" href="mailto:REPLACE_ME@email.com">Email</a>
-            <a class="btn" href="https://www.linkedin.com/in/REPLACE_ME" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="btn" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn primary" href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
+            <a class="btn" href="tel:+821026253406">+82 10-2625-3406</a>
+            <a class="btn ghost" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
 
           <div class="hr"></div>
 
-          <h3>운영 메모</h3>
+          <h3>Operating notes</h3>
           <ul class="list">
-            <li>콘텐츠는 “짧게/명확하게/팩트 기반”</li>
-            <li>섹션을 늘릴 때는: 섹션 → 페이지 분리 → 결제/주문 연동</li>
-            <li>광고 수주는: 패키지 3종 + 결제링크면 바로 가능</li>
+            <li>No sensitive aircraft/operator details in public samples.</li>
+            <li>Templates and standardized phrasing for international teams.</li>
+            <li>Official contact channels only (safe outreach).</li>
           </ul>
         </div>
       </div>
@@ -630,15 +575,14 @@
 
     <footer>
       <div>© <span id="yy">2026</span> LEE’s Technology · lsk690vip.com</div>
-      <div class="muted2">KST 기준 · Simple / Modern / 3D Glass</div>
+      <div class="muted2">KST · Single-file English site</div>
     </footer>
   </main>
 
   <script>
-    // ✅ Updated 시간: 현재 KST로 자동 표기
+    // KST updated time
     (function(){
       const now = new Date();
-      // KST = UTC+9
       const kst = new Date(now.getTime() + 9*60*60*1000);
       const pad = (n)=> String(n).padStart(2,'0');
       const y = kst.getUTCFullYear();
@@ -654,9 +598,9 @@
       if(yy) yy.textContent = String(y);
     })();
 
-    // ✅ mailto 전송
+    // mailto send
     function sendMail(){
-      const to = "supersungkyu@gmail.com"; // 성규님 이메일로 변경
+      const to = "supersungkyu@gmail.com";
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const subject = document.getElementById("subject").value.trim();
@@ -676,70 +620,3 @@
   </script>
 </body>
 </html>
-<!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <!-- ✅ SEO 기본 -->
-  <title>LEE’s Technology | Aviation Avionics · Documentation · Global</title>
-  <meta name="description" content="Aviation Avionics 중심의 문제 해결(RCA)·문서화·표준 템플릿. 글로벌 원격 협업을 위한 실전 포트폴리오." />
-  <meta name="robots" content="index,follow" />
-
-  <!-- OG -->
-  <meta property="og:title" content="LEE’s Technology" />
-  <meta property="og:description" content="Aviation Avionics · Documentation · Global collaboration" />
-  <meta property="og:type" content="website" />
-
-  <style>
-    :root{
-      --bg0:#070b14;
-      --bg1:#0b1222;
-      --card: rgba(255,255,255,.06);
-      --line: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --muted2: rgba(255,255,255,.56);
-      --accent:#6ee7ff;
-      --accent2:#a78bfa;
-      --ok:#34d399;
-      --warn:#fbbf24;
-      --radius: 18px;
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --max: 1120px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      color:var(--text);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
-      background:
-        radial-gradient(900px 520px at 18% 12%, rgba(110,231,255,.18), transparent 60%),
-        radial-gradient(760px 520px at 82% 18%, rgba(167,139,250,.16), transparent 58%),
-        radial-gradient(900px 650px at 50% 85%, rgba(52,211,153,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:34px 18px 72px}
-
-    /* Top nav (sticky) */
-    .topnav{
-      position: sticky; top: 12px; z-index: 50;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:10px 12px;
-      margin: 0 auto 18px;
-      max-width: var(--max);
-      background: rgba(7, 16, 28, .55);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.30);
-    }
-    .nav-left{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      padding:6px 10px;
-
