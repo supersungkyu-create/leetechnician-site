@@ -4,31 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>LEE’s Technology | Avionics Documentation · SME Review · Remote</title>
-  <meta name="description" content="Remote-ready avionics documentation: checklists, handover templates, 1-page job aids, and SME review. Built for global collaboration." />
+  <title>LEE’s Technology | Avionics · Remote Tech Support · Documentation</title>
+  <meta name="description" content="Remote-ready avionics support and documentation: troubleshooting case notes, checklists, handover templates, and SME review. Built for international teams (SG/MY friendly)." />
   <meta name="robots" content="index,follow" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="LEE’s Technology" />
-  <meta property="og:description" content="Avionics Documentation · SME Review · Remote Collaboration" />
+  <meta property="og:description" content="Avionics · Remote Tech Support · SME Review · Documentation" />
   <meta property="og:type" content="website" />
 
   <style>
     :root{
-      --bg0:#060a13;
-      --bg1:#0a1020;
-      --line: rgba(255,255,255,.10);
+      --bg0:#070a10;
+      --bg1:#0b1220;
+      --card: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.12);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.56);
-      --accent:#6ee7ff;
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.52);
+      --accent:#67e8f9;
       --accent2:#a78bfa;
       --ok:#34d399;
-      --warn:#fbbf24;
-      --radius: 18px;
-      --shadow: 0 18px 60px rgba(0,0,0,.55);
-      --shadow2: 0 10px 30px rgba(0,0,0,.35);
-      --max: 1120px;
+      --radius: 16px;
+      --max: 1060px;
+      --shadow: 0 18px 60px rgba(0,0,0,.45);
+      --shadow2: 0 8px 22px rgba(0,0,0,.35);
     }
 
     *{box-sizing:border-box}
@@ -38,149 +38,143 @@
       color:var(--text);
       font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
       background:
-        radial-gradient(900px 520px at 18% 12%, rgba(110,231,255,.16), transparent 60%),
-        radial-gradient(760px 520px at 82% 18%, rgba(167,139,250,.14), transparent 58%),
-        radial-gradient(900px 650px at 50% 85%, rgba(52,211,153,.10), transparent 55%),
+        radial-gradient(900px 520px at 12% 10%, rgba(103,232,249,.12), transparent 60%),
+        radial-gradient(760px 520px at 88% 14%, rgba(167,139,250,.11), transparent 58%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
       overflow-x:hidden;
     }
 
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:34px 18px 72px}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 16px 64px}
+    .sr{position:absolute;left:-9999px}
 
-    /* top nav */
-    .topnav{
+    /* Top bar */
+    .topbar{
       position: sticky; top: 12px; z-index: 50;
       display:flex; align-items:center; justify-content:space-between; gap:12px;
       padding:10px 12px;
-      margin: 0 auto 18px;
-      max-width: var(--max);
-      background: rgba(7, 16, 28, .55);
-      backdrop-filter: blur(12px);
+      background: rgba(10, 16, 26, .58);
       border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: 0 12px 40px rgba(0,0,0,.30);
+      border-radius: 14px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.28);
     }
-    .nav-left{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
     .brand{
       display:flex; align-items:center; gap:10px;
-      padding:6px 10px;
-      border:1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.04);
       text-decoration:none;
-      font-weight:800;
-      letter-spacing:-.2px;
-    }
-    .brand .logo{
-      width:12px;height:12px;border-radius:50%;
-      background: linear-gradient(135deg, rgba(110,231,255,.9), rgba(167,139,250,.85));
-      box-shadow: 0 0 18px rgba(110,231,255,.28);
-    }
-    .nav-links{display:flex; gap:8px; flex-wrap:wrap}
-    .nav-links a{
-      padding:8px 10px;
+      padding:6px 10px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.90);
-      text-decoration:none;
-      font-size: 13px;
-      opacity:.92;
-    }
-    .nav-links a:hover{opacity:1}
-    .nav-right{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
-    .mini{
-      font-size: 12px;
-      color: var(--muted2);
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border:1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.03);
+      font-weight:800;
+      letter-spacing:-.2px;
       white-space:nowrap;
     }
-    .dot{width:10px;height:10px;border-radius:50%; background: rgba(52,211,153,.95); box-shadow: 0 0 14px rgba(52,211,153,.35)}
-
-    /* layout */
-    .grid{display:grid; gap:18px}
-    .grid-2{grid-template-columns: 1.4fr .9fr}
-    .grid-2b{grid-template-columns: 1fr 1fr}
-    @media (max-width: 980px){
-      .grid-2,.grid-2b{grid-template-columns:1fr}
-      .topnav{top:8px}
+    .logo{
+      width:11px;height:11px;border-radius:50%;
+      background: linear-gradient(135deg, rgba(103,232,249,.9), rgba(167,139,250,.85));
+      box-shadow: 0 0 18px rgba(103,232,249,.25);
+    }
+    .nav{
+      display:flex; flex-wrap:wrap; gap:8px;
+      justify-content:center;
+    }
+    .nav a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      font-size:13px;
+      color: rgba(255,255,255,.88);
+      opacity:.92;
+    }
+    .nav a:hover{opacity:1}
+    .meta{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;
+      font-size:12px; color: var(--muted2);
+      white-space:nowrap;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .dot{
+      width:9px;height:9px;border-radius:50%;
+      background: rgba(52,211,153,.95);
+      box-shadow: 0 0 14px rgba(52,211,153,.30);
     }
 
-    /* card */
+    /* Layout */
+    .grid{display:grid; gap:14px}
+    .g2{grid-template-columns: 1.35fr .85fr}
+    .g2b{grid-template-columns: 1fr 1fr}
+    @media (max-width: 980px){
+      .g2,.g2b{grid-template-columns:1fr}
+      .topbar{top:8px}
+      .meta{justify-content:flex-start}
+    }
+
+    /* Card */
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.028));
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
       padding: 18px;
       position:relative;
-      transform: perspective(1100px) translateZ(0);
       overflow:hidden;
     }
+    .card.sub{box-shadow:none; background: rgba(255,255,255,.03)}
     .card::before{
       content:"";
       position:absolute; inset:-1px;
-      border-radius: var(--radius);
       background:
-        radial-gradient(600px 240px at 18% 12%, rgba(110,231,255,.18), transparent 55%),
-        radial-gradient(640px 260px at 86% 18%, rgba(167,139,250,.16), transparent 55%),
-        radial-gradient(520px 260px at 50% 120%, rgba(52,211,153,.12), transparent 55%);
+        radial-gradient(600px 240px at 20% 12%, rgba(103,232,249,.14), transparent 55%),
+        radial-gradient(640px 260px at 85% 16%, rgba(167,139,250,.12), transparent 55%);
       opacity:.55;
-      pointer-events:none !important; /* ✅ critical: never block clicks */
+      pointer-events:none;
       mask: linear-gradient(#000, transparent 78%);
     }
+    /* Keep clickable above overlay */
+    a, button, input, textarea { position: relative; z-index: 2; }
 
-    /* ✅ ensure clickable elements always above overlays */
-    a, button, .btn, .btns, input, textarea, label { position: relative; z-index: 5; }
-
-    @media (hover:hover){
-      .card:hover{
-        transform: perspective(1100px) rotateX(2deg) rotateY(-3deg) translateY(-2px);
-        transition: transform .18s ease;
-      }
-    }
-
-    /* typography */
-    h1{margin:0 0 10px; font-size: 44px; letter-spacing:-.8px}
-    h2{margin:0 0 10px; font-size: 18px; color:var(--muted); font-weight:700}
-    h3{margin:0 0 10px; font-size: 16px; color:rgba(255,255,255,.88)}
+    /* Typography */
+    h1{margin:0 0 10px; font-size:42px; letter-spacing:-.8px; line-height:1.1}
+    h2{margin:0 0 10px; font-size:18px; color:var(--muted); font-weight:800}
+    h3{margin:0 0 10px; font-size:15px; color:rgba(255,255,255,.88)}
     p{margin:10px 0; color:var(--muted); line-height:1.7}
+    .headline{
+      background: linear-gradient(90deg, rgba(103,232,249,.95), rgba(167,139,250,.92), rgba(52,211,153,.92));
+      -webkit-background-clip:text; background-clip:text;
+      color: transparent;
+    }
     .kicker{
       display:inline-flex; align-items:center; gap:8px;
       padding:8px 12px;
-      border:1px solid var(--line);
       border-radius:999px;
-      background: rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
       color: rgba(255,255,255,.80);
       font-size: 13px;
       margin-bottom:14px;
     }
-    .subtitle{font-size:14px; color:rgba(255,255,255,.78)}
-    .small{font-size:13px; color:var(--muted2)}
-    .muted2{color:var(--muted2)}
     .hr{height:1px; background: var(--line); margin:14px 0}
+    .small{font-size:13px; color: var(--muted2)}
+    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.8}
+    section{scroll-margin-top: 90px}
 
-    /* hero headline gradient */
-    .headline{
-      background: linear-gradient(90deg, rgba(110,231,255,.95), rgba(167,139,250,.92), rgba(52,211,153,.92));
-      -webkit-background-clip:text; background-clip:text;
-      color: transparent;
-    }
-
-    /* buttons */
+    /* Buttons */
     .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
     .btn{
       display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px;
       border-radius: 12px;
       border:1px solid var(--line);
-      background: rgba(255,255,255,.05);
+      background: rgba(255,255,255,.04);
       text-decoration:none;
       color: rgba(255,255,255,.92);
       font-size: 14px;
@@ -188,53 +182,28 @@
       box-shadow: var(--shadow2);
     }
     .btn.primary{
-      background: linear-gradient(135deg, rgba(110,231,255,.22), rgba(167,139,250,.20));
+      background: linear-gradient(135deg, rgba(103,232,249,.18), rgba(167,139,250,.16));
       border-color: rgba(255,255,255,.14);
     }
-    .btn.ghost{
-      background: rgba(255,255,255,.03);
-      box-shadow: none;
-    }
+    .btn.ghost{background: rgba(255,255,255,.02); box-shadow:none}
     .btn.small{padding:9px 10px; font-size:13px}
 
-    .pill{
-      display:inline-flex;
-      padding:8px 10px;
-      border-radius:999px;
+    /* Info tiles */
+    .tiles{display:grid; grid-template-columns: repeat(3,1fr); gap:12px; margin-top:12px;}
+    .tile{
       border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.82);
-      font-size: 13px;
-      margin: 6px 8px 0 0;
-    }
-    .tag-ok{border-color: rgba(52,211,153,.35); background: rgba(52,211,153,.08)}
-
-    section{scroll-margin-top: 90px}
-    .section-title{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
-      margin: 14px 0 10px;
-    }
-    .section-title h2{margin:0}
-    .section-title .meta{font-size:12px; color:var(--muted2)}
-    .list{margin:0; padding-left:18px; color:var(--muted); line-height:1.8}
-    .two-col{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
-    @media (max-width: 720px){ .two-col{grid-template-columns:1fr} }
-
-    /* metrics */
-    .metrics{
-      display:grid; grid-template-columns: repeat(3,1fr); gap:12px;
-      margin-top:12px;
-    }
-    .metric{
-      border:1px solid var(--line);
-      border-radius: 16px;
+      border-radius: 14px;
       background: rgba(255,255,255,.03);
       padding:12px;
     }
-    .metric b{font-size:18px}
-    @media (max-width: 720px){ .metrics{grid-template-columns:1fr} }
+    .tile b{font-size:16px}
+    @media (max-width: 720px){ .tiles{grid-template-columns:1fr} }
 
-    /* form */
+    /* Samples grid */
+    .sample-grid{display:grid; grid-template-columns: repeat(2,1fr); gap:12px; margin-top:10px;}
+    @media (max-width: 820px){ .sample-grid{grid-template-columns:1fr} }
+
+    /* Contact form */
     .form{display:grid; gap:10px;}
     .inp, .txt{
       width:100%;
@@ -247,26 +216,14 @@
     }
     .txt{min-height:120px; resize:vertical}
     .note{font-size:12px; color: var(--muted2); margin-top:6px;}
-    .linkline a{ text-decoration: underline; }
 
     footer{
-      margin-top: 20px;
-      padding-top: 18px;
+      margin-top: 18px;
+      padding-top: 16px;
       border-top: 1px solid var(--line);
       color: var(--muted2);
       font-size: 12px;
       display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    }
-
-    /* subtle motion */
-    @media (prefers-reduced-motion: no-preference){
-      .floaty{
-        animation: floaty 6s ease-in-out infinite;
-      }
-      @keyframes floaty{
-        0%,100%{transform: translateY(0)}
-        50%{transform: translateY(-4px)}
-      }
     }
   </style>
 
@@ -277,11 +234,17 @@
     "@type":"Person",
     "name":"LEE",
     "url":"https://lsk690vip.com",
-    "jobTitle":"Avionics Documentation · SME Review (Remote)",
+    "jobTitle":"Avionics · Remote Tech Support · SME Review",
     "email":"mailto:supersungkyu@gmail.com",
     "telephone":"+82-10-2625-3406",
     "knowsAbout":[
-      "Avionics Maintenance","Troubleshooting (RCA)","Technical Documentation","Shift Handover","Checklists","Safety & Compliance"
+      "Commercial Avionics Maintenance",
+      "Troubleshooting (RCA)",
+      "Remote Technical Support",
+      "Technical Documentation",
+      "Shift Handover",
+      "Checklists",
+      "Safety & Compliance"
     ],
     "sameAs":[
       "https://github.com/supersungkyu-create"
@@ -291,293 +254,282 @@
 </head>
 
 <body>
-  <!-- Sticky nav -->
-  <div class="topnav">
-    <div class="nav-left">
+  <div class="wrap">
+    <!-- Top -->
+    <div class="topbar" role="navigation" aria-label="Site">
       <a class="brand" href="#top" aria-label="Go to top">
-        <span class="logo"></span>
+        <span class="logo" aria-hidden="true"></span>
         <span>LEE’s Technology</span>
       </a>
-      <span class="mini"><span class="dot"></span>Open to remote / contract · Global</span>
+
+      <div class="nav" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#samples">Samples</a>
+        <a href="#reachout">Reach out</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="meta">
+        <span class="pill"><span class="dot" aria-hidden="true"></span>Open to SG/MY · Remote/Contract</span>
+        <span class="pill">Updated: <span id="updated">—</span></span>
+      </div>
     </div>
 
-    <div class="nav-links" aria-label="Primary">
-      <a href="#services">Services</a>
-      <a href="#samples">Samples</a>
-      <a href="#official">Official Contacts</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <main id="top" style="margin-top:16px">
+      <!-- HERO -->
+      <div class="grid g2">
+        <header class="card">
+          <span class="kicker">Commercial Avionics · Remote Tech Support · Documentation</span>
 
-    <div class="nav-right">
-      <span class="mini">Updated: <span id="updated">2026-02-04 00:00 (KST)</span></span>
-    </div>
-  </div>
+          <h1 class="headline">Field experience → remote-ready support</h1>
+          <p class="small" style="margin-top:0">
+            Troubleshooting case notes · checklists · handover templates · clear defect reporting (sanitized / non-confidential)
+          </p>
 
-  <main id="top" class="wrap">
-    <!-- HERO -->
-    <div class="grid grid-2">
-      <header class="card floaty">
-        <div class="kicker">Avionics · Documentation · SME Review · Remote Delivery</div>
+          <p>
+            I help teams reduce ambiguity in troubleshooting and handovers by delivering <b>simple, reusable</b> artifacts.
+            The goal is <b>clarity</b>: what to check first, what to record, and when to escalate.
+          </p>
 
-        <h1 class="headline">Field experience → reusable documentation</h1>
-        <div class="subtitle">
-          Practical checklists · shift handover templates · 1-page job aids · clear defect reporting
-        </div>
-
-        <p>
-          I convert real maintenance thinking into <b>remote-ready deliverables</b>.
-          The focus is not “pretty writing”, but <b>repeatable, audit-friendly</b> documents your team can reuse.
-        </p>
-
-        <div class="btns">
-          <a class="btn primary" href="#samples">View Samples</a>
-          <a class="btn" href="mailto:supersungkyu@gmail.com">Email</a>
-          <a class="btn" href="tel:+821026253406">Call</a>
-          <a class="btn ghost" href="https://github.com/supersungkyu-create/leetechnician-site" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-
-        <p class="small linkline" style="margin-top:10px">
-          Email: <a href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
-          &nbsp;·&nbsp;
-          Phone: <a href="tel:+821026253406">+82 10-2625-3406</a>
-        </p>
-
-        <div class="hr"></div>
-
-        <div class="metrics">
-          <div class="metric">
-            <b>Remote-ready</b>
-            <div class="small">PDF / Doc / Notion</div>
+          <div class="btns">
+            <a class="btn primary" href="#samples">View Samples</a>
+            <a class="btn" href="mailto:supersungkyu@gmail.com">Email</a>
+            <a class="btn" href="tel:+821026253406">Call</a>
+            <a class="btn ghost" href="https://github.com/supersungkyu-create/leetechnician-site" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
-          <div class="metric">
-            <b>Fast iteration</b>
-            <div class="small">Draft → review → delivery</div>
+
+          <div class="hr"></div>
+
+          <div class="tiles" aria-label="Highlights">
+            <div class="tile">
+              <b>Remote-first</b>
+              <div class="small">PDF / Doc / Notion</div>
+            </div>
+            <div class="tile">
+              <b>Fast iteration</b>
+              <div class="small">Draft → review → delivery</div>
+            </div>
+            <div class="tile">
+              <b>Safety-aware</b>
+              <div class="small">Power / CB / ESD focus</div>
+            </div>
           </div>
-          <div class="metric">
-            <b>Clarity first</b>
-            <div class="small">Short, standard phrasing</div>
-          </div>
-        </div>
-      </header>
 
-      <aside class="card">
-        <div class="section-title">
-          <h2>Core Keywords</h2>
-          <div class="meta">search-friendly</div>
-        </div>
+          <p class="small" style="margin-top:12px">
+            Email: <a href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
+            &nbsp;·&nbsp;
+            Phone: <a href="tel:+821026253406">+82 10-2625-3406</a>
+          </p>
+        </header>
 
-        <div>
-          <span class="pill">Avionics Maintenance</span>
-          <span class="pill">Troubleshooting (RCA)</span>
-          <span class="pill">Shift Handover</span>
-          <span class="pill">Checklists / SOP</span>
-          <span class="pill">Defect Reporting</span>
-          <span class="pill">Safety & Compliance</span>
-          <span class="pill tag-ok">Remote Contract</span>
-        </div>
+        <aside class="card">
+          <h2>What I can support</h2>
 
-        <div class="hr"></div>
+          <ul class="list">
+            <li><b>Remote troubleshooting guidance</b> (structured RCA)</li>
+            <li><b>SME review</b> for avionics-facing documents</li>
+            <li><b>Templates</b> (handover, defect reports, checklists)</li>
+            <li><b>1-page job aids</b> for safe, repeatable steps</li>
+          </ul>
 
-        <h3>How I work</h3>
-        <p class="muted2">
-          I do not publish sensitive aircraft/operator details.  
-          I provide <b>generalized templates</b> and <b>structured writing</b> suitable for international teams.
-        </p>
+          <div class="hr"></div>
 
-        <div class="hr"></div>
+          <h3>Important note</h3>
+          <p class="small">
+            Public samples are <b>sanitized</b>: no operator/aircraft sensitive details, no OEM manual excerpts.
+            I respect confidentiality and compliance requirements.
+          </p>
 
-        <div class="small">
-          ✅ Ready:
-          <span class="pill tag-ok">Clickable links verified</span>
-          <span class="pill tag-ok">Single-file site</span>
-        </div>
-      </aside>
-    </div>
+          <div class="hr"></div>
 
-    <!-- SERVICES -->
-    <section id="services" class="card" style="margin-top:18px">
-      <div class="section-title">
+          <h3>Target region</h3>
+          <p class="small">Singapore / Malaysia · remote / contract · international teams</p>
+        </aside>
+      </div>
+
+      <!-- SERVICES -->
+      <section id="services" class="card" style="margin-top:14px">
         <h2>Services</h2>
-        <div class="meta">what you can buy</div>
-      </div>
 
-      <div class="two-col">
-        <div>
-          <h3>1) SME Review (Avionics)</h3>
-          <ul class="list">
-            <li>Technical accuracy check</li>
-            <li>Field realism (what operators actually need)</li>
-            <li>Consistency of terms and steps</li>
-          </ul>
+        <div class="grid g2b">
+          <div class="card sub">
+            <h3>1) Remote Tech Support (Documentation-backed)</h3>
+            <ul class="list">
+              <li>Symptom → conditions → suspects → tests → decision</li>
+              <li>Clear escalation criteria (what evidence to capture)</li>
+              <li>Ticket-ready phrasing for international teams</li>
+            </ul>
+          </div>
 
-          <div class="hr"></div>
+          <div class="card sub">
+            <h3>2) SME Review (Avionics)</h3>
+            <ul class="list">
+              <li>Accuracy, consistency, and field realism</li>
+              <li>Safety-sensitive checks (power / CB / ESD)</li>
+              <li>Short, standard phrasing</li>
+            </ul>
+          </div>
 
-          <h3>2) Template Pack (Reusable)</h3>
-          <ul class="list">
-            <li>Shift handover template (EN)</li>
-            <li>Troubleshooting checklist (RCA flow)</li>
-            <li>Defect report template (clear wording)</li>
-          </ul>
+          <div class="card sub">
+            <h3>3) Template Pack (Reusable)</h3>
+            <ul class="list">
+              <li>Shift handover (EN)</li>
+              <li>Troubleshooting checklist (RCA flow)</li>
+              <li>Defect report template (clear wording)</li>
+            </ul>
+          </div>
+
+          <div class="card sub">
+            <h3>4) 1-page Job Aid</h3>
+            <ul class="list">
+              <li>Procedure → 1 page with steps & verification points</li>
+              <li>Do/Don’t and caution points</li>
+              <li>Delivery in PDF / Doc / Notion</li>
+            </ul>
+          </div>
         </div>
+      </section>
 
-        <div>
-          <h3>3) 1-page Job Aid</h3>
-          <ul class="list">
-            <li>Manual/procedure → field-ready 1 page</li>
-            <li>Short steps, verification points, cautions</li>
-            <li>Delivery in PDF/Doc/Notion</li>
-          </ul>
+      <!-- SAMPLES -->
+      <section id="samples" class="card" style="margin-top:14px">
+        <h2>Samples (public / sanitized)</h2>
+        <p class="small" style="margin-top:0">
+          Upload PDFs into <b>/assets/docs/</b>, then the buttons will open them directly.
+          (No placeholders, no alerts.)
+        </p>
 
-          <div class="hr"></div>
+        <div class="sample-grid" aria-label="Samples">
+          <div class="card sub">
+            <h3>Sample 01 · Shift Handover Template</h3>
+            <p class="small">Concise structure to reduce miscommunication during shifts.</p>
+            <div class="btns">
+              <a class="btn small primary" href="assets/docs/sample-handover.pdf" target="_blank" rel="noopener">Open PDF</a>
+              <a class="btn small ghost" href="assets/docs/sample-handover.docx" target="_blank" rel="noopener">DOCX</a>
+            </div>
+            <p class="note">If you don’t upload DOCX, the DOCX button can be removed.</p>
+          </div>
 
-          <h3>Typical process</h3>
-          <ul class="list">
-            <li>Intake (scope & constraints)</li>
-            <li>Draft v1</li>
-            <li>1 review round</li>
-            <li>Final delivery</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+          <div class="card sub">
+            <h3>Sample 02 · Troubleshooting Checklist</h3>
+            <p class="small">RCA flow: power → ground → shielding → signal → connector.</p>
+            <div class="btns">
+              <a class="btn small primary" href="assets/docs/sample-checklist.pdf" target="_blank" rel="noopener">Open PDF</a>
+              <a class="btn small ghost" href="assets/docs/sample-checklist.docx" target="_blank" rel="noopener">DOCX</a>
+            </div>
+            <p class="note">Public version must be sanitized (no OEM excerpts).</p>
+          </div>
 
-    <!-- SAMPLES -->
-    <section id="samples" class="card" style="margin-top:18px">
-      <div class="section-title">
-        <h2>Samples</h2>
-        <div class="meta">public / sanitized</div>
-      </div>
+          <div class="card sub">
+            <h3>Sample 03 · 1-page Job Aid</h3>
+            <p class="small">One page: steps, cautions, and verification points.</p>
+            <div class="btns">
+              <a class="btn small primary" href="assets/docs/sample-jobaid.pdf" target="_blank" rel="noopener">Open PDF</a>
+              <a class="btn small ghost" href="assets/docs/sample-jobaid.docx" target="_blank" rel="noopener">DOCX</a>
+            </div>
+            <p class="note">Use generic/fictional scenario names only.</p>
+          </div>
 
-      <p class="muted2">
-        These are safe public versions (no aircraft/operator sensitive data). Replace the “Open” links with your files (PDF) when ready.
-      </p>
-
-      <div class="grid grid-2b" style="margin-top:10px">
-        <div class="card" style="box-shadow:none">
-          <h3>Sample 01 · Shift Handover Template</h3>
-          <p class="muted2">A concise structure to reduce miscommunication during shifts.</p>
-          <div class="pill">Template</div><div class="pill">Quality</div><div class="pill">EN</div>
-          <div class="btns">
-            <a class="btn small" href="#" onclick="alert('Link placeholder: set to /assets/sample-handover.pdf'); return false;">Open</a>
+          <div class="card sub">
+            <h3>Sample 04 · Case Note (Remote Support)</h3>
+            <p class="small">Ticket-ready structure: symptom → tests → decision → escalation.</p>
+            <div class="btns">
+              <a class="btn small primary" href="assets/docs/sample-casenote.pdf" target="_blank" rel="noopener">Open PDF</a>
+              <a class="btn small ghost" href="assets/docs/sample-casenote.docx" target="_blank" rel="noopener">DOCX</a>
+            </div>
+            <p class="note">This is ideal for SG/MY recruiters (remote support signal).</p>
           </div>
         </div>
 
-        <div class="card" style="box-shadow:none">
-          <h3>Sample 02 · Troubleshooting Checklist</h3>
-          <p class="muted2">RCA flow: power → ground → shielding → signal → connector.</p>
-          <div class="pill">Checklist</div><div class="pill">RCA</div><div class="pill">Avionics</div>
-          <div class="btns">
-            <a class="btn small" href="#" onclick="alert('Link placeholder: set to /assets/sample-checklist.pdf'); return false;">Open</a>
+        <div class="hr"></div>
+        <p class="small">
+          ⚠️ Public rule: no aircraft/operator identifiers, no internal forms, no OEM manual text/screenshots.
+        </p>
+      </section>
+
+      <!-- REACH OUT (SG/MY FRIENDLY) -->
+      <section id="reachout" class="card" style="margin-top:14px">
+        <h2>Reach out (SG/MY-friendly)</h2>
+        <p class="small" style="margin-top:0">
+          Recommended message: include <b>one sample link</b> + <b>6 lines</b> (deliverable, turnaround, scope).
+        </p>
+
+        <div class="grid g2b">
+          <div class="card sub">
+            <h3>6-line outreach template</h3>
+            <ul class="list">
+              <li>Role: Remote Tech Support / Technical Services (Avionics)</li>
+              <li>Strength: structured troubleshooting + clear documentation</li>
+              <li>Deliverable: checklist / handover / case note / 1-page job aid</li>
+              <li>Turnaround: 48–72h for a first draft (example)</li>
+              <li>Constraints: sanitized / no confidential data</li>
+              <li>Link: one sample PDF</li>
+            </ul>
+          </div>
+
+          <div class="card sub">
+            <h3>Quick links</h3>
+            <div class="btns">
+              <a class="btn primary" href="mailto:supersungkyu@gmail.com?subject=Remote%20Tech%20Support%20%2F%20Technical%20Services%20(Avionics)&body=Hello%2C%0A%0AI%20am%20LEE%2C%20a%20commercial%20avionics%20professional%20preparing%20for%20remote%20Tech%20Support%20%2F%20Technical%20Services%20roles%20(SG%2FMY).%0A%0AI%20can%20provide%20sanitized%20samples%3A%20handover%20template%2C%20RCA%20checklist%2C%20case%20note%2C%201-page%20job%20aid.%0A%0ASample%20link%3A%20%5Bpaste%20one%20PDF%20URL%5D%0A%0AThank%20you." >Email (prefilled)</a>
+              <a class="btn" href="tel:+821026253406">Call</a>
+              <a class="btn ghost" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+            <p class="note">The email draft is editable before sending.</p>
           </div>
         </div>
+      </section>
 
-        <div class="card" style="box-shadow:none">
-          <h3>Sample 03 · 1-page Job Aid</h3>
-          <p class="muted2">Manual/procedure summarized into one page with steps & checks.</p>
-          <div class="pill">Job Aid</div><div class="pill">Reusable</div><div class="pill">EN</div>
-          <div class="btns">
-            <a class="btn small" href="#" onclick="alert('Link placeholder: set to /assets/sample-jobaid.pdf'); return false;">Open</a>
-          </div>
-        </div>
-
-        <div class="card" style="box-shadow:none">
-          <h3>What to do next</h3>
-          <p class="muted2">
-            Upload 1 PDF sample first. Then use the Official Contact links to reach out with a short proposal + your sample link.
-          </p>
-          <div class="pill">Proof</div><div class="pill">Pipeline</div><div class="pill">Remote</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- OFFICIAL CONTACT LINKS (SAFE) -->
-    <section id="official" class="card" style="margin-top:18px">
-      <div class="section-title">
-        <h2>Official Contact Links (Safe)</h2>
-        <div class="meta">official channels only</div>
-      </div>
-
-      <p class="muted2">
-        These links go to official contact pages (no scraping, no bulk emailing).
-      </p>
-
-      <div class="grid grid-2b" style="margin-top:10px">
-        <div class="card" style="box-shadow:none">
-          <h3>Sonovision</h3>
-          <p class="muted2">Technical Publications / S1000D ecosystem.</p>
-          <div class="btns">
-            <a class="btn primary" href="https://www.sonovisiongroup.com/about/contact/" target="_blank" rel="noopener noreferrer">Official Contact</a>
-            <a class="btn" href="https://www.sonovisionusa.com/" target="_blank" rel="noopener noreferrer">Website</a>
-          </div>
-          <p class="note">Suggested keywords: SME review / job aid / checklist conversion / remote contract</p>
-        </div>
-
-        <div class="card" style="box-shadow:none">
-          <h3>Dayton T. Brown (DTB)</h3>
-          <p class="muted2">Engineering services including technical publications.</p>
-          <div class="btns">
-            <a class="btn primary" href="https://www.dtb.com/contact/" target="_blank" rel="noopener noreferrer">Official Contact</a>
-            <a class="btn" href="https://www.dtb.com/services/technical-publications/" target="_blank" rel="noopener noreferrer">Tech Pubs</a>
-          </div>
-          <p class="note">Suggested keywords: documentation support / SME review / templates / remote contract</p>
-        </div>
-      </div>
-
-      <div class="hr"></div>
-      <div class="small">
-        Tip: keep outreach short. Send 1 sample link + 6 lines about deliverables and turnaround.
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="card" style="margin-top:18px">
-      <div class="section-title">
+      <!-- CONTACT -->
+      <section id="contact" class="card" style="margin-top:14px">
         <h2>Contact</h2>
-        <div class="meta">direct</div>
-      </div>
 
-      <div class="grid grid-2b">
-        <div>
-          <h3>Quick Message (Email)</h3>
-          <p class="muted2">
-            This uses <b>mailto</b> (no server needed). Your email app will open.
-          </p>
+        <div class="grid g2b">
+          <div class="card sub">
+            <h3>Quick Message (mailto)</h3>
+            <p class="small">No server needed. Your email client will open.</p>
 
-          <form class="form" onsubmit="return sendMail();">
-            <input class="inp" id="name" placeholder="Name / Company" required />
-            <input class="inp" id="email" placeholder="Email" type="email" required />
-            <input class="inp" id="subject" placeholder="Subject" required />
-            <textarea class="txt" id="message" placeholder="Message" required></textarea>
-            <button class="btn primary" type="submit">Send via Email</button>
-            <div class="note">If nothing happens, your browser/email client may block mailto. Use the direct buttons on the right.</div>
-          </form>
-        </div>
+            <form class="form" onsubmit="return sendMail();">
+              <label class="sr" for="name">Name / Company</label>
+              <input class="inp" id="name" placeholder="Name / Company" required />
 
-        <div>
-          <h3>Direct</h3>
-          <div class="btns">
-            <a class="btn primary" href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
-            <a class="btn" href="tel:+821026253406">+82 10-2625-3406</a>
-            <a class="btn ghost" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <label class="sr" for="email">Email</label>
+              <input class="inp" id="email" placeholder="Email" type="email" required />
+
+              <label class="sr" for="subject">Subject</label>
+              <input class="inp" id="subject" placeholder="Subject" required />
+
+              <label class="sr" for="message">Message</label>
+              <textarea class="txt" id="message" placeholder="Message" required></textarea>
+
+              <button class="btn primary" type="submit">Send via Email</button>
+              <div class="note">If mailto is blocked, use the direct buttons on the right.</div>
+            </form>
           </div>
 
-          <div class="hr"></div>
+          <div class="card sub">
+            <h3>Direct</h3>
+            <div class="btns">
+              <a class="btn primary" href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
+              <a class="btn" href="tel:+821026253406">+82 10-2625-3406</a>
+              <a class="btn ghost" href="https://github.com/supersungkyu-create/leetechnician-site" target="_blank" rel="noopener noreferrer">Repository</a>
+            </div>
 
-          <h3>Operating notes</h3>
-          <ul class="list">
-            <li>No sensitive aircraft/operator details in public samples.</li>
-            <li>Templates and standardized phrasing for international teams.</li>
-            <li>Official contact channels only (safe outreach).</li>
-          </ul>
+            <div class="hr"></div>
+            <h3>Public sample policy</h3>
+            <ul class="list">
+              <li>No operator/aircraft identifiers in public files.</li>
+              <li>No OEM manual excerpts/screenshots.</li>
+              <li>Sanitized templates and generic case notes only.</li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <footer>
-      <div>© <span id="yy">2026</span> LEE’s Technology · lsk690vip.com</div>
-      <div class="muted2">KST · Single-file English site</div>
-    </footer>
-  </main>
+      <footer>
+        <div>© <span id="yy">2026</span> LEE’s Technology · lsk690vip.com</div>
+        <div>English · KST · Single-file HTML</div>
+      </footer>
+    </main>
+  </div>
 
   <script>
     // KST updated time
@@ -593,7 +545,6 @@
       const updated = `${y}-${m}-${d} ${hh}:${mm} (KST)`;
       const el = document.getElementById('updated');
       if(el) el.textContent = updated;
-
       const yy = document.getElementById('yy');
       if(yy) yy.textContent = String(y);
     })();
