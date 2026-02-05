@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AeroVolt One | Avionics & Electrical Career Hub</title>
-  <meta name="description" content="Modern portfolio for global avionics support and Korea electrical career." />
+  <title>AeroVolt One | Sunset Career Hub</title>
+  <meta name="description" content="Avionics global career + Korean electrical career hub with one-click document access." />
   <meta name="robots" content="index,follow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,154 +13,224 @@
 
   <style>
     :root{
-      --bg:#0b1020;
-      --bg2:#111936;
-      --panel:#151f3e;
-      --panel2:#1b2750;
-      --line:rgba(255,255,255,.12);
-      --text:#f6f8ff;
-      --muted:#b8c2e3;
+      --bg:#0b1220;
+      --panel:rgba(10,18,34,.72);
+      --panel2:rgba(20,30,52,.72);
+      --line:rgba(255,255,255,.18);
+      --txt:#f4f8ff;
+      --muted:#c7d2f2;
       --blue:#4f7cff;
       --cyan:#22d3ee;
       --violet:#8b5cf6;
       --amber:#f59e0b;
       --green:#10b981;
-      --danger:#fb7185;
       --radius:18px;
       --max:1200px;
-      --shadow:0 16px 40px rgba(0,0,0,.35);
+      --shadow:0 16px 40px rgba(0,0,0,.4);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
+      color:var(--txt);
       font-family:'Inter','Noto Sans KR',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(79,124,255,.25), transparent 55%),
-        radial-gradient(1000px 600px at 100% 0%, rgba(139,92,246,.2), transparent 50%),
-        linear-gradient(180deg,var(--bg),var(--bg2));
+      background-color:var(--bg);
       overflow-x:hidden;
+    }
+
+    /* 4K sunset beach hero background */
+    .hero-bg{
+      position:fixed; inset:0; z-index:-2;
+      background:
+        linear-gradient(to bottom, rgba(5,10,18,.35), rgba(5,10,18,.70)),
+        url('https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg?auto=compress&cs=tinysrgb&w=3840') center center / cover no-repeat fixed;
+      transform:scale(1.02);
+    }
+    .hero-glow{
+      position:fixed; inset:0; z-index:-1;
+      background:
+        radial-gradient(1200px 500px at 15% 0%, rgba(245,158,11,.16), transparent 60%),
+        radial-gradient(1200px 500px at 85% 0%, rgba(139,92,246,.14), transparent 60%),
+        radial-gradient(1100px 480px at 50% 100%, rgba(34,211,238,.10), transparent 65%);
+      pointer-events:none;
     }
 
     a{color:inherit;text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:18px 16px 72px}
+
+    /* language visibility */
     .hide-ko .ko{display:none}
     .hide-en .en{display:none}
 
-    /* Top bar */
+    /* topbar */
     .topbar{
-      position:sticky; top:10px; z-index:50;
+      position:sticky; top:10px; z-index:60;
       display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
-      background:rgba(10,16,34,.75);
+      padding:10px 12px;
       border:1px solid var(--line);
       border-radius:14px;
-      padding:10px 12px;
-      backdrop-filter:blur(10px);
+      background:rgba(9,15,28,.62);
+      backdrop-filter: blur(10px);
       box-shadow:var(--shadow);
     }
     .brand{
-      display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:-.2px;
-      border:1px solid var(--line); border-radius:999px; padding:8px 12px;
-      background:rgba(255,255,255,.04);
+      display:flex; align-items:center; gap:10px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      font-weight:900; letter-spacing:-.2px;
     }
     .dot{
       width:11px;height:11px;border-radius:50%;
-      background:conic-gradient(from 90deg,var(--blue),var(--cyan),var(--violet),var(--blue));
-      box-shadow:0 0 16px rgba(79,124,255,.5);
+      background: conic-gradient(var(--blue),var(--cyan),var(--violet),var(--blue));
+      box-shadow:0 0 16px rgba(79,124,255,.55);
     }
     .nav{display:flex; gap:8px; flex-wrap:wrap}
     .nav a{
-      padding:8px 10px; border-radius:999px; border:1px solid var(--line);
-      background:rgba(255,255,255,.03); font-size:13px; color:#dce4ff;
+      font-size:13px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:#e5ecff;
     }
 
     .lang{
-      display:flex; gap:6px; border:1px solid var(--line); border-radius:999px;
-      padding:4px; background:rgba(255,255,255,.03);
+      display:flex; gap:6px;
+      padding:4px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
     }
     .lang button{
-      border:0; border-radius:999px; padding:8px 12px; cursor:pointer;
-      color:#dce4ff; background:transparent; font-weight:700; font-size:12px;
+      border:0; cursor:pointer;
+      padding:8px 12px; border-radius:999px;
+      background:transparent; color:#e7edff;
+      font-weight:700; font-size:12px;
     }
-    .lang button.active{ background:#fff; color:#0f1730; }
+    .lang button.active{
+      background:#fff; color:#0f1730;
+    }
 
-    /* Hero */
+    /* hero */
     .hero{
       margin-top:14px;
-      border:1px solid var(--line); border-radius:22px;
-      background:
-        radial-gradient(900px 300px at 0% 0%, rgba(34,211,238,.16), transparent 60%),
-        radial-gradient(900px 300px at 100% 10%, rgba(139,92,246,.18), transparent 60%),
-        linear-gradient(140deg,var(--panel),var(--panel2));
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(135deg,var(--panel),var(--panel2));
       box-shadow:var(--shadow);
       padding:34px;
-      display:grid; gap:20px;
+      display:grid; gap:18px;
       grid-template-columns:1.2fr .8fr;
     }
     .kicker{
-      display:inline-flex; gap:8px; align-items:center;
-      border:1px solid var(--line); border-radius:999px; padding:8px 12px;
-      font-size:12px; color:#d6deff; background:rgba(255,255,255,.04);
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px; color:#e6edff;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
     }
-    h1{margin:10px 0 12px; font-size:52px; line-height:1.05; letter-spacing:-1.5px}
+    h1{
+      margin:12px 0;
+      font-size:54px; line-height:1.04; letter-spacing:-1.6px;
+    }
     .grad{
-      background:linear-gradient(90deg,#fff,var(--cyan),#d8ceff);
+      background:linear-gradient(90deg,#fff,#ffe0a6,#cce8ff,#e6d8ff);
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    .sub{color:var(--muted); line-height:1.7; margin:0 0 16px}
+    .sub{margin:0 0 14px; color:var(--muted); line-height:1.75}
     .btns{display:flex; gap:10px; flex-wrap:wrap}
     .btn{
-      padding:11px 14px; border-radius:12px; border:1px solid var(--line);
-      background:rgba(255,255,255,.05); color:#f5f7ff; font-weight:700; font-size:14px;
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:42px;
+      padding:10px 14px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.08);
+      color:#f6f8ff; font-weight:700; font-size:14px;
+      box-shadow:0 8px 22px rgba(0,0,0,.25);
+      transition:.2s ease;
     }
-    .btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet)); border-color:transparent}
-    .btn.secondary{background:linear-gradient(135deg,#1f2f66,#1f5f8f)}
-    .meta-grid{display:grid; gap:10px; grid-template-columns:1fr 1fr}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{
+      border-color:transparent;
+      background:linear-gradient(135deg,var(--blue),var(--violet));
+    }
+    .btn.warm{
+      border-color:transparent;
+      background:linear-gradient(135deg,var(--amber),#ef4444);
+    }
+
+    .meta-grid{
+      display:grid; gap:10px; grid-template-columns:1fr 1fr;
+      align-content:start;
+    }
     .meta{
-      border:1px solid var(--line); border-radius:14px; padding:12px;
-      background:rgba(255,255,255,.04);
+      border:1px solid var(--line); border-radius:14px;
+      padding:12px; background:rgba(255,255,255,.06);
     }
-    .meta b{display:block; font-size:16px}
+    .meta b{display:block; font-size:15px}
     .meta span{font-size:12px; color:var(--muted)}
 
-    /* Sections */
-    .section{margin-top:14px; border:1px solid var(--line); border-radius:18px; padding:20px; background:rgba(255,255,255,.03); box-shadow:var(--shadow)}
+    /* generic section */
+    .section{
+      margin-top:14px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:20px;
+      background:rgba(10,18,34,.64);
+      box-shadow:var(--shadow);
+      scroll-margin-top:95px;
+    }
     .section h2{margin:0 0 8px; font-size:28px; letter-spacing:-.4px}
-    .section p.desc{margin:0 0 14px; color:var(--muted)}
+    .desc{margin:0 0 14px; color:var(--muted)}
     .grid{display:grid; gap:12px}
     .g3{grid-template-columns:repeat(3,1fr)}
     .g2{grid-template-columns:repeat(2,1fr)}
+
     .card{
-      border:1px solid var(--line); border-radius:14px; padding:16px;
-      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:16px;
+      background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));
     }
     .card h3{margin:0 0 8px; font-size:18px}
-    .card p{margin:0 0 10px; color:var(--muted); font-size:14px; line-height:1.6}
+    .card p{margin:0 0 10px; color:var(--muted); font-size:14px; line-height:1.65}
     .chips{display:flex; gap:6px; flex-wrap:wrap; margin:8px 0 10px}
-    .chip{font-size:11px; padding:5px 8px; border-radius:999px; border:1px solid var(--line); color:#d9e1ff; background:rgba(255,255,255,.04)}
-    .chip.ok{border-color:rgba(16,185,129,.45); background:rgba(16,185,129,.12)}
-    .chip.pending{border-color:rgba(245,158,11,.45); background:rgba(245,158,11,.14)}
-
-    .link-list{margin:0; padding-left:18px; color:var(--muted); line-height:1.8}
-    .link-list a{color:#dbe7ff; text-decoration:underline}
+    .chip{
+      font-size:11px; padding:5px 8px;
+      border:1px solid var(--line); border-radius:999px;
+      color:#e3eaff; background:rgba(255,255,255,.05);
+    }
+    .chip.ok{border-color:rgba(16,185,129,.5); background:rgba(16,185,129,.15)}
+    .chip.pending{border-color:rgba(245,158,11,.5); background:rgba(245,158,11,.16)}
 
     .table-wrap{overflow:auto; border:1px solid var(--line); border-radius:12px}
-    table{width:100%; border-collapse:collapse; min-width:720px}
-    th,td{padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; font-size:14px}
-    th{background:rgba(255,255,255,.05)}
+    table{width:100%; border-collapse:collapse; min-width:760px}
+    th,td{
+      border-bottom:1px solid var(--line);
+      padding:12px; text-align:left; vertical-align:top; font-size:14px;
+    }
+    th{background:rgba(255,255,255,.06)}
     tr:last-child td{border-bottom:0}
+
+    .link-list{margin:0; padding-left:18px; color:var(--muted); line-height:1.85}
+    .link-list a{color:#e8eeff; text-decoration:underline}
 
     .contact{
       display:grid; gap:12px; grid-template-columns:1fr 1fr;
     }
+
     .footer{
-      margin-top:16px; border-top:1px solid var(--line); padding-top:14px;
-      color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      margin-top:16px;
+      border-top:1px solid var(--line);
+      padding-top:14px;
+      font-size:12px; color:var(--muted);
+      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
     }
 
-    @media (max-width:980px){
+    @media(max-width:980px){
       .hero{grid-template-columns:1fr; padding:22px}
       h1{font-size:40px}
       .g3,.g2,.contact{grid-template-columns:1fr}
@@ -169,17 +239,21 @@
   </style>
 </head>
 <body class="hide-ko">
+  <div class="hero-bg"></div>
+  <div class="hero-glow"></div>
+
   <div class="wrap">
     <header class="topbar">
       <a class="brand" href="#top"><span class="dot"></span>AeroVolt One</a>
+
       <nav class="nav">
         <a href="#global">Global</a>
         <a href="#companies">Companies</a>
-        <a href="#study">Study</a>
+        <a href="#study">Tech/Study</a>
         <a href="#korea">국내 전기</a>
         <a href="#resume">Resume</a>
-        <a href="#jobs">Job Sites</a>
       </nav>
+
       <div class="lang">
         <button id="koBtn" onclick="setLang('ko')">한국어</button>
         <button id="enBtn" class="active" onclick="setLang('en')">English</button>
@@ -188,81 +262,83 @@
 
     <section id="top" class="hero">
       <div>
-        <span class="kicker">Avionics · Technical Support · Electrical</span>
-        <h1><span class="grad en">Modern Career Hub for Aviation & Electrical</span><span class="grad ko">항공·전기 커리어 허브</span></h1>
-        <p class="sub en">Built for non-field roles: Technical Services, Engineering Support, Reliability, Documentation, and Technical Assistant tracks.</p>
-        <p class="sub ko">현장 작업이 아닌 기술지원/관리 직무 중심 포트폴리오입니다. 이력서·학습자료·브리핑을 수시로 업데이트할 수 있습니다.</p>
+        <span class="kicker">Avionics · Technical Support · Electrical Career Hub</span>
+        <h1><span class="grad en">Sunset-ready Portfolio, One-click Documents</span><span class="grad ko">노을 감성 + 원클릭 자료 포트폴리오</span></h1>
+        <p class="sub en">For non-field aviation roles (Technical Services / Engineering Support) and Korean electrical career track.</p>
+        <p class="sub ko">현장직이 아닌 항공 기술지원/관리 직무 + 국내 전기 취업 준비를 한 곳에서 관리합니다.</p>
+
         <div class="btns">
-          <a class="btn primary" href="#resume">Open Resume</a>
-          <a class="btn secondary" href="#companies">Target Companies</a>
+          <a class="btn primary" href="#resume">Open Resume Zone</a>
+          <a class="btn warm" href="#companies">Target Companies</a>
           <a class="btn" href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
           <a class="btn" href="tel:+821026253406">+82 10-2625-3406</a>
         </div>
       </div>
+
       <aside class="meta-grid">
-        <div class="meta"><b>Global Focus</b><span>Singapore / Malaysia</span></div>
-        <div class="meta"><b>Role Type</b><span>Non-field technical roles</span></div>
-        <div class="meta"><b>Documents</b><span>Resume / Briefing / Learning PDF</span></div>
-        <div class="meta"><b>Timezone</b><span>KST (UTC+9)</span></div>
+        <div class="meta"><b>Focus</b><span>SG / MY Aviation Support Roles</span></div>
+        <div class="meta"><b>Mode</b><span>Document-driven Career Site</span></div>
+        <div class="meta"><b>Upload</b><span>PDF in assets/* folders</span></div>
+        <div class="meta"><b>Time</b><span>KST (UTC+9)</span></div>
       </aside>
     </section>
 
     <section id="global" class="section">
-      <h2>Global Avionics Track</h2>
-      <p class="desc">Upload-ready cards. Replace files anytime in GitHub and links keep working.</p>
+      <h2>Global Avionics Documents</h2>
+      <p class="desc">Click button → uploaded PDF opens instantly in new tab.</p>
       <div class="grid g3">
         <article class="card">
-          <h3>Global Resume (EN)</h3>
-          <p>Role-tailored CV for Technical Services / Engineering Support.</p>
-          <div class="chips"><span class="chip ok">READY</span><span class="chip">/assets/resume/</span></div>
+          <h3>Global Resume</h3>
+          <p>English CV for Technical Services / Engineering Support roles.</p>
+          <div class="chips"><span class="chip ok">READY</span><span class="chip">assets/resume</span></div>
           <a class="btn" href="assets/resume/resume-global-v1.pdf" target="_blank" rel="noopener">Open PDF</a>
         </article>
         <article class="card">
-          <h3>Career Brief</h3>
-          <p>1~2 page executive summary for recruiters and hiring managers.</p>
-          <div class="chips"><span class="chip pending">PENDING</span><span class="chip">/assets/resume/</span></div>
+          <h3>Career Brief (EN)</h3>
+          <p>1~2 page hiring summary for recruiters.</p>
+          <div class="chips"><span class="chip pending">PENDING</span><span class="chip">assets/resume</span></div>
           <a class="btn" href="assets/resume/career-brief-en.pdf" target="_blank" rel="noopener">Open PDF</a>
         </article>
         <article class="card">
-          <h3>Weekly Avionics Briefing</h3>
-          <p>Learning notes + trend digest + next week action list.</p>
-          <div class="chips"><span class="chip pending">PENDING</span><span class="chip">/assets/study/</span></div>
+          <h3>Weekly Briefing</h3>
+          <p>Avionics study log + trend notes + action plan.</p>
+          <div class="chips"><span class="chip pending">PENDING</span><span class="chip">assets/study</span></div>
           <a class="btn" href="assets/study/weekly-briefing.pdf" target="_blank" rel="noopener">Open PDF</a>
         </article>
       </div>
     </section>
 
     <section id="companies" class="section">
-      <h2>Target Companies (Support / Technical Roles)</h2>
-      <p class="desc">Use official career portals for application.</p>
+      <h2>Target Companies (Official Portals)</h2>
+      <p class="desc">Use official pages for application and updates.</p>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th>Company</th>
-              <th>Possible Position Type</th>
+              <th>Role Direction</th>
               <th>Official Link</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Singapore Airlines (SIA)</td>
-              <td>Engineering Technical Services / Ground Technical Roles</td>
-              <td><a href="https://careers.singaporeair.com/" target="_blank" rel="noopener">Careers Portal</a></td>
+              <td>Engineering Technical Services / Ground Technical</td>
+              <td><a href="https://careers.singaporeair.com/" target="_blank" rel="noopener">SIA Careers</a></td>
             </tr>
             <tr>
               <td>SIA Engineering Company (SIAEC)</td>
               <td>MRO Engineering / Technical Support</td>
-              <td><a href="https://www.siaec.com.sg/our_company/people/careers.html" target="_blank" rel="noopener">Careers</a></td>
+              <td><a href="https://www.siaec.com.sg/our_company/people/careers.html" target="_blank" rel="noopener">SIAEC Careers</a></td>
             </tr>
             <tr>
               <td>ST Engineering Aerospace</td>
               <td>Technical Services Engineer / Engineering Support</td>
-              <td><a href="https://www.stengg.com/en/careers/" target="_blank" rel="noopener">Careers</a></td>
+              <td><a href="https://www.stengg.com/en/careers/" target="_blank" rel="noopener">ST Engineering Careers</a></td>
             </tr>
             <tr>
               <td>Malaysia Airlines / MAG</td>
-              <td>Engineering Support / Technical Operations</td>
+              <td>Engineering / Technical Operations Support</td>
               <td><a href="https://www.malaysiaairlines.com/kr/en/about-us/join-us.html" target="_blank" rel="noopener">Join Us</a></td>
             </tr>
           </tbody>
@@ -271,36 +347,36 @@
     </section>
 
     <section id="study" class="section">
-      <h2>Latest Tech & Learning</h2>
+      <h2>Latest Tech & Learning Links</h2>
       <div class="grid g2">
-        <div class="card">
-          <h3>Industry & Regulatory Links</h3>
+        <article class="card">
+          <h3>Regulation / Authority</h3>
           <ul class="link-list">
             <li><a href="https://www.easa.europa.eu/en" target="_blank" rel="noopener">EASA</a></li>
             <li><a href="https://www.faa.gov/" target="_blank" rel="noopener">FAA</a></li>
             <li><a href="https://www.icao.int/" target="_blank" rel="noopener">ICAO</a></li>
             <li><a href="https://www.iata.org/" target="_blank" rel="noopener">IATA</a></li>
           </ul>
-        </div>
-        <div class="card">
-          <h3>News & MRO Intelligence</h3>
+        </article>
+        <article class="card">
+          <h3>Industry / News</h3>
           <ul class="link-list">
             <li><a href="https://www.flightglobal.com/" target="_blank" rel="noopener">FlightGlobal</a></li>
             <li><a href="https://www.ainonline.com/" target="_blank" rel="noopener">AIN Online</a></li>
             <li><a href="https://www.mro-network.com/" target="_blank" rel="noopener">MRO Network</a></li>
             <li><a href="https://www.aviationweek.com/" target="_blank" rel="noopener">Aviation Week</a></li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
 
     <section id="korea" class="section">
-      <h2 class="ko">국내 전기 취업/학습 섹션</h2>
-      <h2 class="en">Korea Electrical Career Section</h2>
+      <h2 class="ko">국내 전기 취업/학습</h2>
+      <h2 class="en">Korea Electrical Career</h2>
       <div class="grid g2">
         <article class="card">
           <h3 class="ko">취업 사이트</h3>
-          <h3 class="en">Job Platforms (KR)</h3>
+          <h3 class="en">Job Platforms</h3>
           <ul class="link-list">
             <li><a href="https://www.saramin.co.kr/" target="_blank" rel="noopener">사람인</a></li>
             <li><a href="https://www.jobkorea.co.kr/" target="_blank" rel="noopener">잡코리아</a></li>
@@ -308,8 +384,8 @@
           </ul>
         </article>
         <article class="card">
-          <h3 class="ko">전기 법/시험/자료</h3>
-          <h3 class="en">Electrical Law / Exam / Study</h3>
+          <h3 class="ko">법/시험/자료</h3>
+          <h3 class="en">Law / Exam / Study</h3>
           <ul class="link-list">
             <li><a href="https://www.law.go.kr/" target="_blank" rel="noopener">국가법령정보센터</a></li>
             <li><a href="https://www.kec.or.kr/" target="_blank" rel="noopener">KEC</a></li>
@@ -320,44 +396,37 @@
     </section>
 
     <section id="resume" class="section">
-      <h2>Resume / Portfolio Upload Zone</h2>
-      <p class="desc">Keep versioned file names. Example: resume-global-v2.pdf, briefing-2026-02.pdf</p>
+      <h2>Resume & Upload Zone</h2>
+      <p class="desc">Upload files into GitHub folders below, then buttons open them instantly.</p>
       <div class="grid g3">
         <article class="card">
-          <h3>Global Resume</h3>
-          <p>/assets/resume/resume-global-v1.pdf</p>
+          <h3>EN Resume</h3>
+          <p>assets/resume/resume-global-v1.pdf</p>
           <a class="btn" href="assets/resume/resume-global-v1.pdf" target="_blank" rel="noopener">Open</a>
         </article>
         <article class="card">
-          <h3>Korea Resume</h3>
-          <p>/assets/resume/resume-korea-v1.pdf</p>
+          <h3>KR Resume</h3>
+          <p>assets/resume/resume-korea-v1.pdf</p>
           <a class="btn" href="assets/resume/resume-korea-v1.pdf" target="_blank" rel="noopener">Open</a>
         </article>
         <article class="card">
-          <h3>Study Archive</h3>
-          <p>/assets/study/ (briefing, notes, logs)</p>
-          <a class="btn" href="assets/study/weekly-briefing.pdf" target="_blank" rel="noopener">Open Sample</a>
+          <h3>Study Note</h3>
+          <p>assets/study/electrical-notes.pdf</p>
+          <a class="btn" href="assets/study/electrical-notes.pdf" target="_blank" rel="noopener">Open</a>
         </article>
       </div>
-    </section>
 
-    <section id="jobs" class="section">
-      <h2>Job Sites</h2>
-      <div class="grid g2">
+      <div class="grid g2" style="margin-top:12px;">
         <div class="card">
-          <h3>Global</h3>
-          <ul class="link-list">
-            <li><a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener">LinkedIn Jobs</a></li>
-            <li><a href="https://www.indeed.com/" target="_blank" rel="noopener">Indeed</a></li>
-            <li><a href="https://www.jobstreet.com/" target="_blank" rel="noopener">JobStreet</a></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Direct Contact</h3>
+          <h3>Contact</h3>
           <div class="contact">
             <a class="btn" href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
             <a class="btn" href="tel:+821026253406">+82 10-2625-3406</a>
           </div>
+        </div>
+        <div class="card">
+          <h3>GitHub</h3>
+          <a class="btn" href="https://github.com/supersungkyu-create/leetechnician-site" target="_blank" rel="noopener">Open Repository</a>
         </div>
       </div>
     </section>
@@ -370,25 +439,25 @@
 
   <script>
     function setLang(lang){
-      const body = document.body;
-      const koBtn = document.getElementById('koBtn');
-      const enBtn = document.getElementById('enBtn');
+      const b = document.body;
+      const ko = document.getElementById('koBtn');
+      const en = document.getElementById('enBtn');
       if(lang === 'ko'){
-        body.classList.remove('hide-ko');
-        body.classList.add('hide-en');
-        koBtn.classList.add('active');
-        enBtn.classList.remove('active');
+        b.classList.remove('hide-ko');
+        b.classList.add('hide-en');
+        ko.classList.add('active');
+        en.classList.remove('active');
       } else {
-        body.classList.remove('hide-en');
-        body.classList.add('hide-ko');
-        enBtn.classList.add('active');
-        koBtn.classList.remove('active');
+        b.classList.remove('hide-en');
+        b.classList.add('hide-ko');
+        en.classList.add('active');
+        ko.classList.remove('active');
       }
-      localStorage.setItem('lang', lang);
+      localStorage.setItem('site_lang', lang);
     }
 
     (function init(){
-      const saved = localStorage.getItem('lang') || 'en';
+      const saved = localStorage.getItem('site_lang') || 'en';
       setLang(saved);
       document.getElementById('yy').textContent = new Date().getFullYear();
     })();
