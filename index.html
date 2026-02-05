@@ -1,707 +1,397 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEE Sung Kyu | Aviation & Electrical Portfolio</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AeroVolt One | Avionics & Electrical Career Hub</title>
+  <meta name="description" content="Modern portfolio for global avionics support and Korea electrical career." />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    :root {
-      --aviation: #1e40af;
-      --aviation-light: #3b82f6;
-      --electrical: #f59e0b;
-      --electrical-light: #fbbf24;
-      --white: #ffffff;
-      --dark: #0f172a;
-    }
-    
-    body {
-      font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
-      color: var(--dark);
-      overflow-x: hidden;
-    }
-    
-    /* 4K 하와이 석양 배경 */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: 
-        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)),
-        url('https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=3840') center/cover fixed;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle, transparent 0%, rgba(0,0,0,0.3) 100%);
-      animation: pulse 20s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 1; }
-    }
-    
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 20px 40px;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(20px);
-      z-index: 1000;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: all 0.3s;
-    }
-    
-    .nav.scrolled {
-      background: rgba(0,0,0,0.9);
-      padding: 15px 40px;
-    }
-    
-    .logo {
-      font-size: 28px;
-      font-weight: 900;
-      color: white;
-      text-decoration: none;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-    }
-    
-    .lang-toggle {
-      display: flex;
-      gap: 5px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50px;
-      padding: 5px;
-    }
-    
-    .lang-btn {
-      padding: 10px 24px;
-      border: none;
-      background: transparent;
-      color: rgba(255,255,255,0.8);
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-      border-radius: 50px;
-      transition: all 0.3s;
-    }
-    
-    .lang-btn.active {
-      background: white;
-      color: var(--dark);
-      box-shadow: 0 4px 15px rgba(255,255,255,0.4);
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      color: white;
-      max-width: 1000px;
-      padding: 0 40px;
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    
-    .hero h1 {
-      font-size: 80px;
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 30px;
-      text-shadow: 0 5px 30px rgba(0,0,0,0.8);
-      letter-spacing: -3px;
-    }
-    
-    .hero p {
-      font-size: 22px;
-      line-height: 1.8;
-      margin-bottom: 50px;
-      text-shadow: 0 3px 20px rgba(0,0,0,0.8);
-    }
-    
-    .cta {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .btn {
-      padding: 20px 48px;
-      border: none;
-      border-radius: 60px;
-      font-weight: 800;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      transition: all 0.4s;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-    
-    .btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-    
-    .btn-primary {
-      background: white;
-      color: var(--aviation);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-      z-index: 1;
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    }
-    
-    .btn-secondary {
-      background: transparent;
-      color: white;
-      border: 3px solid white;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-    }
-    
-    .btn-secondary:hover {
-      background: white;
-      color: var(--aviation);
-      transform: translateY(-5px) scale(1.05);
-    }
-    
-    .section {
-      padding: 140px 40px;
-    }
-    
-    .section-dark {
-      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
-      color: white;
-    }
-    
-    .section-light {
-      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-    }
-    
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    
-    .section-header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
-    
-    .section-label {
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      opacity: 0.8;
-    }
-    
-    .aviation-label {
-      color: var(--aviation-light);
-      text-shadow: 0 0 20px rgba(59,130,246,0.5);
-    }
-    
-    .electrical-label {
-      color: var(--electrical-light);
-      text-shadow: 0 0 20px rgba(251,191,36,0.5);
-    }
-    
-    .section-title {
-      font-size: 56px;
-      font-weight: 900;
-      margin-bottom: 25px;
-      letter-spacing: -2px;
-    }
-    
-    .section-description {
-      font-size: 18px;
-      line-height: 1.8;
-      max-width: 700px;
-      margin: 0 auto;
-      opacity: 0.9;
-    }
-    
-    /* PDF 배너 그리드 */
-    .pdf-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 32px;
-      margin-top: 60px;
-    }
-    
-    /* 🎯 개선된 PDF 배너 카드 */
-    .pdf-banner {
-      position: relative;
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(15px);
-      border: 2px solid rgba(255,255,255,0.12);
-      border-radius: 24px;
-      padding: 40px 32px;
-      cursor: pointer;
-      text-decoration: none;
-      display: block;
-      color: inherit;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    }
-    
-    .section-light .pdf-banner {
-      background: white;
-      border: 2px solid rgba(0,0,0,0.08);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    }
-    
-    /* 상단 컬러 라인 */
-    .pdf-banner::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 6px;
-      background: linear-gradient(90deg, var(--aviation), var(--aviation-light));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s;
-      box-shadow: 0 0 20px currentColor;
-    }
-    
-    .pdf-banner.electrical::before {
-      background: linear-gradient(90deg, var(--electrical), var(--electrical-light));
-    }
-    
-    /* 호버 효과 */
-    .pdf-banner:hover {
-      transform: translateY(-12px) scale(1.02);
-      border-color: var(--aviation-light);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
-    }
-    
-    .pdf-banner:hover::before {
-      transform: scaleX(1);
-    }
-    
-    /* PDF 아이콘 */
-    .pdf-icon {
-      width: 72px;
-      height: 72px;
-      background: linear-gradient(135deg, var(--aviation), var(--aviation-light));
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      margin-bottom: 24px;
-      box-shadow: 
-        0 10px 30px rgba(30,64,175,0.4),
-        inset 0 -2px 10px rgba(0,0,0,0.2),
-        inset 0 2px 10px rgba(255,255,255,0.3);
-      transition: all 0.4s;
-    }
-    
-    .pdf-banner:hover .pdf-icon {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 15px 40px rgba(30,64,175,0.6);
-    }
-    
-    .pdf-banner.electrical .pdf-icon {
-      background: linear-gradient(135deg, var(--electrical), var(--electrical-light));
-      box-shadow: 
-        0 10px 30px rgba(245,158,11,0.4),
-        inset 0 -2px 10px rgba(0,0,0,0.2),
-        inset 0 2px 10px rgba(255,255,255,0.3);
-    }
-    
-    .pdf-banner.electrical:hover .pdf-icon {
-      box-shadow: 0 15px 40px rgba(245,158,11,0.6);
-    }
-    
-    .pdf-title {
-      font-size: 24px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-    
-    .pdf-description {
-      font-size: 15px;
-      line-height: 1.7;
-      opacity: 0.85;
-      margin-bottom: 20px;
-    }
-    
-    .pdf-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    .pdf-badge {
-      padding: 8px 16px;
-      border-radius: 50px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-    
-    .badge-ready {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-      box-shadow: 0 4px 15px rgba(16,185,129,0.4);
-    }
-    
-    .badge-pending {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: white;
-      box-shadow: 0 4px 15px rgba(245,158,11,0.4);
-    }
-    
-    /* 링크 섹션 */
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-top: 60px;
-    }
-    
-    .link-card {
-      background: rgba(255,255,255,0.06);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 32px 28px;
-      transition: all 0.4s;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-    }
-    
-    .section-light .link-card {
-      background: white;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    }
-    
-    .link-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 50px rgba(0,0,0,0.25);
-    }
-    
-    .link-card h3 {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-    
-    .link-card ul {
-      list-style: none;
-    }
-    
-    .link-card li {
-      margin-bottom: 12px;
-    }
-    
-    .link-card a {
-      color: inherit;
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      opacity: 0.85;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .link-card a:hover {
-      opacity: 1;
-      color: var(--aviation-light);
-      transform: translateX(6px);
-    }
-    
-    .link-card a::before {
-      content: '→';
-      font-weight: 800;
-    }
-    
-    .footer {
-      background: #000;
-      color: white;
-      padding: 60px 40px 40px;
-      text-align: center;
-    }
-    
-    .footer-contact {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    
-    .footer-contact a {
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 700;
-      transition: all 0.3s;
-    }
-    
-    .footer-contact a:hover {
-      color: white;
-      transform: translateY(-2px);
-    }
-    
-    .footer-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      margin: 40px 0;
-    }
-    
-    /* 언어 전환 */
-    [data-lang="ko"] .lang-en { display: none; }
-    [data-lang="en"] .lang-ko { display: none; }
-    
-    /* 반응형 */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 48px; }
-      .hero p { font-size: 17px; }
-      .section-title { font-size: 36px; }
-      .pdf-grid { grid-template-columns: 1fr; }
-      .nav { padding: 15px 20px; }
-      .section { padding: 80px 20px; }
+    :root{
+      --bg:#0b1020;
+      --bg2:#111936;
+      --panel:#151f3e;
+      --panel2:#1b2750;
+      --line:rgba(255,255,255,.12);
+      --text:#f6f8ff;
+      --muted:#b8c2e3;
+      --blue:#4f7cff;
+      --cyan:#22d3ee;
+      --violet:#8b5cf6;
+      --amber:#f59e0b;
+      --green:#10b981;
+      --danger:#fb7185;
+      --radius:18px;
+      --max:1200px;
+      --shadow:0 16px 40px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Inter','Noto Sans KR',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(79,124,255,.25), transparent 55%),
+        radial-gradient(1000px 600px at 100% 0%, rgba(139,92,246,.2), transparent 50%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:18px 16px 72px}
+    .hide-ko .ko{display:none}
+    .hide-en .en{display:none}
+
+    /* Top bar */
+    .topbar{
+      position:sticky; top:10px; z-index:50;
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      background:rgba(10,16,34,.75);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      backdrop-filter:blur(10px);
+      box-shadow:var(--shadow);
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:-.2px;
+      border:1px solid var(--line); border-radius:999px; padding:8px 12px;
+      background:rgba(255,255,255,.04);
+    }
+    .dot{
+      width:11px;height:11px;border-radius:50%;
+      background:conic-gradient(from 90deg,var(--blue),var(--cyan),var(--violet),var(--blue));
+      box-shadow:0 0 16px rgba(79,124,255,.5);
+    }
+    .nav{display:flex; gap:8px; flex-wrap:wrap}
+    .nav a{
+      padding:8px 10px; border-radius:999px; border:1px solid var(--line);
+      background:rgba(255,255,255,.03); font-size:13px; color:#dce4ff;
+    }
+
+    .lang{
+      display:flex; gap:6px; border:1px solid var(--line); border-radius:999px;
+      padding:4px; background:rgba(255,255,255,.03);
+    }
+    .lang button{
+      border:0; border-radius:999px; padding:8px 12px; cursor:pointer;
+      color:#dce4ff; background:transparent; font-weight:700; font-size:12px;
+    }
+    .lang button.active{ background:#fff; color:#0f1730; }
+
+    /* Hero */
+    .hero{
+      margin-top:14px;
+      border:1px solid var(--line); border-radius:22px;
+      background:
+        radial-gradient(900px 300px at 0% 0%, rgba(34,211,238,.16), transparent 60%),
+        radial-gradient(900px 300px at 100% 10%, rgba(139,92,246,.18), transparent 60%),
+        linear-gradient(140deg,var(--panel),var(--panel2));
+      box-shadow:var(--shadow);
+      padding:34px;
+      display:grid; gap:20px;
+      grid-template-columns:1.2fr .8fr;
+    }
+    .kicker{
+      display:inline-flex; gap:8px; align-items:center;
+      border:1px solid var(--line); border-radius:999px; padding:8px 12px;
+      font-size:12px; color:#d6deff; background:rgba(255,255,255,.04);
+    }
+    h1{margin:10px 0 12px; font-size:52px; line-height:1.05; letter-spacing:-1.5px}
+    .grad{
+      background:linear-gradient(90deg,#fff,var(--cyan),#d8ceff);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .sub{color:var(--muted); line-height:1.7; margin:0 0 16px}
+    .btns{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      padding:11px 14px; border-radius:12px; border:1px solid var(--line);
+      background:rgba(255,255,255,.05); color:#f5f7ff; font-weight:700; font-size:14px;
+    }
+    .btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet)); border-color:transparent}
+    .btn.secondary{background:linear-gradient(135deg,#1f2f66,#1f5f8f)}
+    .meta-grid{display:grid; gap:10px; grid-template-columns:1fr 1fr}
+    .meta{
+      border:1px solid var(--line); border-radius:14px; padding:12px;
+      background:rgba(255,255,255,.04);
+    }
+    .meta b{display:block; font-size:16px}
+    .meta span{font-size:12px; color:var(--muted)}
+
+    /* Sections */
+    .section{margin-top:14px; border:1px solid var(--line); border-radius:18px; padding:20px; background:rgba(255,255,255,.03); box-shadow:var(--shadow)}
+    .section h2{margin:0 0 8px; font-size:28px; letter-spacing:-.4px}
+    .section p.desc{margin:0 0 14px; color:var(--muted)}
+    .grid{display:grid; gap:12px}
+    .g3{grid-template-columns:repeat(3,1fr)}
+    .g2{grid-template-columns:repeat(2,1fr)}
+    .card{
+      border:1px solid var(--line); border-radius:14px; padding:16px;
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+    }
+    .card h3{margin:0 0 8px; font-size:18px}
+    .card p{margin:0 0 10px; color:var(--muted); font-size:14px; line-height:1.6}
+    .chips{display:flex; gap:6px; flex-wrap:wrap; margin:8px 0 10px}
+    .chip{font-size:11px; padding:5px 8px; border-radius:999px; border:1px solid var(--line); color:#d9e1ff; background:rgba(255,255,255,.04)}
+    .chip.ok{border-color:rgba(16,185,129,.45); background:rgba(16,185,129,.12)}
+    .chip.pending{border-color:rgba(245,158,11,.45); background:rgba(245,158,11,.14)}
+
+    .link-list{margin:0; padding-left:18px; color:var(--muted); line-height:1.8}
+    .link-list a{color:#dbe7ff; text-decoration:underline}
+
+    .table-wrap{overflow:auto; border:1px solid var(--line); border-radius:12px}
+    table{width:100%; border-collapse:collapse; min-width:720px}
+    th,td{padding:12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; font-size:14px}
+    th{background:rgba(255,255,255,.05)}
+    tr:last-child td{border-bottom:0}
+
+    .contact{
+      display:grid; gap:12px; grid-template-columns:1fr 1fr;
+    }
+    .footer{
+      margin-top:16px; border-top:1px solid var(--line); padding-top:14px;
+      color:var(--muted); font-size:12px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; padding:22px}
+      h1{font-size:40px}
+      .g3,.g2,.contact{grid-template-columns:1fr}
+      .nav{width:100%}
     }
   </style>
 </head>
-<body data-lang="en">
-  
-  <nav class="nav" id="nav">
-    <a href="#" class="logo">LSK</a>
-    <div class="lang-toggle">
-      <button class="lang-btn" onclick="setLang('ko')" id="btn-ko">한국어</button>
-      <button class="lang-btn active" onclick="setLang('en')" id="btn-en">English</button>
-    </div>
-  </nav>
-  
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Technical Partner<br>for<br>Global Aviation</h1>
-      <p>
-        Combining hands-on avionics technical support with Korean electrical<br>
-        engineering expertise, delivering reliable technical solutions.
-      </p>
-      <div class="cta">
-        <a href="#aviation" class="btn btn-primary">View Portfolio</a>
-        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+<body class="hide-ko">
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="#top"><span class="dot"></span>AeroVolt One</a>
+      <nav class="nav">
+        <a href="#global">Global</a>
+        <a href="#companies">Companies</a>
+        <a href="#study">Study</a>
+        <a href="#korea">국내 전기</a>
+        <a href="#resume">Resume</a>
+        <a href="#jobs">Job Sites</a>
+      </nav>
+      <div class="lang">
+        <button id="koBtn" onclick="setLang('ko')">한국어</button>
+        <button id="enBtn" class="active" onclick="setLang('en')">English</button>
       </div>
-    </div>
-  </section>
-  
-  <section id="aviation" class="section section-dark">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label aviation-label">GLOBAL AVIATION CAREER</div>
-        <h2 class="section-title">Avionics Technical Support</h2>
-        <p class="section-description">
-          Professional portfolio for Technical Services, Engineering Support roles<br>
-          in Singapore and Malaysia aviation industry.
-        </p>
-      </div>
-      
-      <div class="pdf-grid">
-        <!-- PDF 배너 - GitHub에 업로드 후 자동으로 뷰어 작동 -->
-        <a href="assets/resume/resume-global-v1.pdf" class="pdf-banner" target="_blank">
-          <div class="pdf-icon">📋</div>
-          <h3 class="pdf-title">Global Resume</h3>
-          <p class="pdf-description">Comprehensive CV tailored for international aviation technical support positions.</p>
-          <div class="pdf-meta">
-            <span class="pdf-badge badge-ready">✓ READY</span>
-          </div>
-        </a>
-        
-        <a href="assets/resume/career-brief-en.pdf" class="pdf-banner" target="_blank">
-          <div class="pdf-icon">📊</div>
-          <h3 class="pdf-title">Career Brief</h3>
-          <p class="pdf-description">Executive summary highlighting key technical achievements.</p>
-          <div class="pdf-meta">
-            <span class="pdf-badge badge-pending">⏳ PENDING</span>
-          </div>
-        </a>
-        
-        <a href="assets/study/weekly-briefing.pdf" class="pdf-banner" target="_blank">
-          <div class="pdf-icon">📰</div>
-          <h3 class="pdf-title">Weekly Briefing</h3>
-          <p class="pdf-description">Latest aviation technology updates and industry insights.</p>
-          <div class="pdf-meta">
-            <span class="pdf-badge badge-pending">⏳ PENDING</span>
-          </div>
-        </a>
-      </div>
-      
-      <div class="links-grid">
-        <div class="link-card">
-          <h3>Singapore Airlines</h3>
-          <ul>
-            <li><a href="https://careers.singaporeair.com/" target="_blank">SIA Careers</a></li>
-            <li><a href="https://www.siaec.com.sg/careers" target="_blank">SIAEC</a></li>
-          </ul>
-        </div>
-        
-        <div class="link-card">
-          <h3>ST Engineering</h3>
-          <ul>
-            <li><a href="https://www.stengg.com/en/careers/" target="_blank">Careers Portal</a></li>
-          </ul>
-        </div>
-        
-        <div class="link-card">
-          <h3>Job Platforms</h3>
-          <ul>
-            <li><a href="https://sg.jobstreet.com/" target="_blank">JobStreet</a></li>
-            <li><a href="https://www.linkedin.com/jobs/" target="_blank">LinkedIn</a></li>
-          </ul>
+    </header>
+
+    <section id="top" class="hero">
+      <div>
+        <span class="kicker">Avionics · Technical Support · Electrical</span>
+        <h1><span class="grad en">Modern Career Hub for Aviation & Electrical</span><span class="grad ko">항공·전기 커리어 허브</span></h1>
+        <p class="sub en">Built for non-field roles: Technical Services, Engineering Support, Reliability, Documentation, and Technical Assistant tracks.</p>
+        <p class="sub ko">현장 작업이 아닌 기술지원/관리 직무 중심 포트폴리오입니다. 이력서·학습자료·브리핑을 수시로 업데이트할 수 있습니다.</p>
+        <div class="btns">
+          <a class="btn primary" href="#resume">Open Resume</a>
+          <a class="btn secondary" href="#companies">Target Companies</a>
+          <a class="btn" href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
+          <a class="btn" href="tel:+821026253406">+82 10-2625-3406</a>
         </div>
       </div>
-    </div>
-  </section>
-  
-  <section id="electrical" class="section section-light">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label electrical-label">국내 전기 경력</div>
-        <h2 class="section-title lang-ko">전기 기술 전문가</h2>
-        <h2 class="section-title lang-en">Electrical Engineering</h2>
-        <p class="section-description lang-ko">
-          국내 전기 분야 취업 및 자격증 준비를 위한 포트폴리오
-        </p>
+      <aside class="meta-grid">
+        <div class="meta"><b>Global Focus</b><span>Singapore / Malaysia</span></div>
+        <div class="meta"><b>Role Type</b><span>Non-field technical roles</span></div>
+        <div class="meta"><b>Documents</b><span>Resume / Briefing / Learning PDF</span></div>
+        <div class="meta"><b>Timezone</b><span>KST (UTC+9)</span></div>
+      </aside>
+    </section>
+
+    <section id="global" class="section">
+      <h2>Global Avionics Track</h2>
+      <p class="desc">Upload-ready cards. Replace files anytime in GitHub and links keep working.</p>
+      <div class="grid g3">
+        <article class="card">
+          <h3>Global Resume (EN)</h3>
+          <p>Role-tailored CV for Technical Services / Engineering Support.</p>
+          <div class="chips"><span class="chip ok">READY</span><span class="chip">/assets/resume/</span></div>
+          <a class="btn" href="assets/resume/resume-global-v1.pdf" target="_blank" rel="noopener">Open PDF</a>
+        </article>
+        <article class="card">
+          <h3>Career Brief</h3>
+          <p>1~2 page executive summary for recruiters and hiring managers.</p>
+          <div class="chips"><span class="chip pending">PENDING</span><span class="chip">/assets/resume/</span></div>
+          <a class="btn" href="assets/resume/career-brief-en.pdf" target="_blank" rel="noopener">Open PDF</a>
+        </article>
+        <article class="card">
+          <h3>Weekly Avionics Briefing</h3>
+          <p>Learning notes + trend digest + next week action list.</p>
+          <div class="chips"><span class="chip pending">PENDING</span><span class="chip">/assets/study/</span></div>
+          <a class="btn" href="assets/study/weekly-briefing.pdf" target="_blank" rel="noopener">Open PDF</a>
+        </article>
       </div>
-      
-      <div class="pdf-grid">
-        <a href="assets/resume/resume-korea-v1.pdf" class="pdf-banner electrical" target="_blank">
-          <div class="pdf-icon">📋</div>
-          <h3 class="pdf-title">국문 이력서</h3>
-          <p class="pdf-description">국내 전기·항공 분야 취업용 상세 이력서</p>
-          <div class="pdf-meta">
-            <span class="pdf-badge badge-ready">✓ 준비완료</span>
-          </div>
-        </a>
-        
-        <a href="assets/study/electrical-notes.pdf" class="pdf-banner electrical" target="_blank">
-          <div class="pdf-icon">⚡</div>
-          <h3 class="pdf-title">전기 기술 노트</h3>
-          <p class="pdf-description">전기 이론 핵심 정리 및 현장 적용 사례</p>
-          <div class="pdf-meta">
-            <span class="pdf-badge badge-pending">⏳ 대기</span>
-          </div>
-        </a>
-        
-        <a href="assets/study/problem-review.pdf" class="pdf-banner electrical" target="_blank">
-          <div class="pdf-icon">✏️</div>
-          <h3 class="pdf-title">기출문제 복기</h3>
-          <p class="pdf-description">전기기사 시험 기출 분석 자료</p>
-          <div class="pdf-meta">
-            <span class="pdf-badge badge-pending">⏳ 대기</span>
-          </div>
-        </a>
+    </section>
+
+    <section id="companies" class="section">
+      <h2>Target Companies (Support / Technical Roles)</h2>
+      <p class="desc">Use official career portals for application.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Possible Position Type</th>
+              <th>Official Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Singapore Airlines (SIA)</td>
+              <td>Engineering Technical Services / Ground Technical Roles</td>
+              <td><a href="https://careers.singaporeair.com/" target="_blank" rel="noopener">Careers Portal</a></td>
+            </tr>
+            <tr>
+              <td>SIA Engineering Company (SIAEC)</td>
+              <td>MRO Engineering / Technical Support</td>
+              <td><a href="https://www.siaec.com.sg/our_company/people/careers.html" target="_blank" rel="noopener">Careers</a></td>
+            </tr>
+            <tr>
+              <td>ST Engineering Aerospace</td>
+              <td>Technical Services Engineer / Engineering Support</td>
+              <td><a href="https://www.stengg.com/en/careers/" target="_blank" rel="noopener">Careers</a></td>
+            </tr>
+            <tr>
+              <td>Malaysia Airlines / MAG</td>
+              <td>Engineering Support / Technical Operations</td>
+              <td><a href="https://www.malaysiaairlines.com/kr/en/about-us/join-us.html" target="_blank" rel="noopener">Join Us</a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  </section>
-  
-  <footer id="contact" class="footer">
-    <div class="footer-contact">
-      <a href="mailto:supersungkyu@gmail.com">📧 supersungkyu@gmail.com</a>
-      <a href="tel:+821026253406">📞 +82 10-2625-3406</a>
-      <a href="https://github.com/supersungkyu-create" target="_blank">💻 GitHub</a>
-    </div>
-    <div class="footer-divider"></div>
-    <p>© 2026 LEE Sung Kyu | Avionics & Electrical Specialist</p>
-  </footer>
-  
+    </section>
+
+    <section id="study" class="section">
+      <h2>Latest Tech & Learning</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Industry & Regulatory Links</h3>
+          <ul class="link-list">
+            <li><a href="https://www.easa.europa.eu/en" target="_blank" rel="noopener">EASA</a></li>
+            <li><a href="https://www.faa.gov/" target="_blank" rel="noopener">FAA</a></li>
+            <li><a href="https://www.icao.int/" target="_blank" rel="noopener">ICAO</a></li>
+            <li><a href="https://www.iata.org/" target="_blank" rel="noopener">IATA</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>News & MRO Intelligence</h3>
+          <ul class="link-list">
+            <li><a href="https://www.flightglobal.com/" target="_blank" rel="noopener">FlightGlobal</a></li>
+            <li><a href="https://www.ainonline.com/" target="_blank" rel="noopener">AIN Online</a></li>
+            <li><a href="https://www.mro-network.com/" target="_blank" rel="noopener">MRO Network</a></li>
+            <li><a href="https://www.aviationweek.com/" target="_blank" rel="noopener">Aviation Week</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="korea" class="section">
+      <h2 class="ko">국내 전기 취업/학습 섹션</h2>
+      <h2 class="en">Korea Electrical Career Section</h2>
+      <div class="grid g2">
+        <article class="card">
+          <h3 class="ko">취업 사이트</h3>
+          <h3 class="en">Job Platforms (KR)</h3>
+          <ul class="link-list">
+            <li><a href="https://www.saramin.co.kr/" target="_blank" rel="noopener">사람인</a></li>
+            <li><a href="https://www.jobkorea.co.kr/" target="_blank" rel="noopener">잡코리아</a></li>
+            <li><a href="https://www.work.go.kr/" target="_blank" rel="noopener">고용24(워크넷)</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3 class="ko">전기 법/시험/자료</h3>
+          <h3 class="en">Electrical Law / Exam / Study</h3>
+          <ul class="link-list">
+            <li><a href="https://www.law.go.kr/" target="_blank" rel="noopener">국가법령정보센터</a></li>
+            <li><a href="https://www.kec.or.kr/" target="_blank" rel="noopener">KEC</a></li>
+            <li><a href="https://www.q-net.or.kr/" target="_blank" rel="noopener">Q-Net</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="resume" class="section">
+      <h2>Resume / Portfolio Upload Zone</h2>
+      <p class="desc">Keep versioned file names. Example: resume-global-v2.pdf, briefing-2026-02.pdf</p>
+      <div class="grid g3">
+        <article class="card">
+          <h3>Global Resume</h3>
+          <p>/assets/resume/resume-global-v1.pdf</p>
+          <a class="btn" href="assets/resume/resume-global-v1.pdf" target="_blank" rel="noopener">Open</a>
+        </article>
+        <article class="card">
+          <h3>Korea Resume</h3>
+          <p>/assets/resume/resume-korea-v1.pdf</p>
+          <a class="btn" href="assets/resume/resume-korea-v1.pdf" target="_blank" rel="noopener">Open</a>
+        </article>
+        <article class="card">
+          <h3>Study Archive</h3>
+          <p>/assets/study/ (briefing, notes, logs)</p>
+          <a class="btn" href="assets/study/weekly-briefing.pdf" target="_blank" rel="noopener">Open Sample</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="jobs" class="section">
+      <h2>Job Sites</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>Global</h3>
+          <ul class="link-list">
+            <li><a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener">LinkedIn Jobs</a></li>
+            <li><a href="https://www.indeed.com/" target="_blank" rel="noopener">Indeed</a></li>
+            <li><a href="https://www.jobstreet.com/" target="_blank" rel="noopener">JobStreet</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Direct Contact</h3>
+          <div class="contact">
+            <a class="btn" href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
+            <a class="btn" href="tel:+821026253406">+82 10-2625-3406</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="yy"></span> AeroVolt One</div>
+      <div>LEE Sung Kyu · Avionics & Electrical</div>
+    </footer>
+  </div>
+
   <script>
-    function setLang(lang) {
-      document.body.setAttribute('data-lang', lang);
-      document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      localStorage.setItem('preferred-lang', lang);
+    function setLang(lang){
+      const body = document.body;
+      const koBtn = document.getElementById('koBtn');
+      const enBtn = document.getElementById('enBtn');
+      if(lang === 'ko'){
+        body.classList.remove('hide-ko');
+        body.classList.add('hide-en');
+        koBtn.classList.add('active');
+        enBtn.classList.remove('active');
+      } else {
+        body.classList.remove('hide-en');
+        body.classList.add('hide-ko');
+        enBtn.classList.add('active');
+        koBtn.classList.remove('active');
+      }
+      localStorage.setItem('lang', lang);
     }
-    
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 100);
-    });
-    
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('preferred-lang') || 'en';
-      setLang(savedLang);
-    });
-    
-    document.querySelectorAll('.pdf-banner').forEach(card => {
-      card.addEventListener('click', function(e) {
-        const badge = this.querySelector('.pdf-badge');
-        if (badge && badge.classList.contains('badge-pending')) {
-          e.preventDefault();
-          alert('PDF 파일을 먼저 GitHub에 업로드해주세요!\n\n1. assets/resume/ 또는 assets/study/ 폴더로 이동\n2. Add file → Upload files\n3. PDF를 드래그 앤 드롭\n4. Commit changes');
-        }
-      });
-    });
-    
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
-      });
-    });
+
+    (function init(){
+      const saved = localStorage.getItem('lang') || 'en';
+      setLang(saved);
+      document.getElementById('yy').textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
-```
-
----
-
-## 📦 GitHub 업로드 완벽 가이드:
-
-### 1️⃣ index.html 업로드
-- 위 코드를 `index.html`로 저장
-- GitHub 저장소 메인에 업로드
-
-### 2️⃣ 폴더 만들기
-```
-Add file → Create new file → 파일명에 입력:
-assets/resume/.gitkeep
-assets/study/.gitkeep
