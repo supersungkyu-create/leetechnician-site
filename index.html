@@ -1,495 +1,707 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-
-  <title>LEE’s Technology | Avionics & Electrical</title>
-  <meta name="description" content="Avionics & Electrical · Remote-ready support · Practical templates and job aids." />
-  <meta name="robots" content="index,follow" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="LEE’s Technology" />
-  <meta property="og:description" content="Avionics & Electrical · Remote-ready support" />
-  <meta property="og:type" content="website" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEE Sung Kyu | Aviation & Electrical Portfolio</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  
   <style>
-    :root{
-      --bg0:#070910;
-      --bg1:#0b1222;
-      --card: rgba(255,255,255,.06);
-      --line: rgba(255,255,255,.12);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --muted2: rgba(255,255,255,.52);
-
-      /* richer accents */
-      --c1:#22d3ee; /* cyan */
-      --c2:#a78bfa; /* violet */
-      --c3:#34d399; /* green */
-      --c4:#fb7185; /* rose */
-      --c5:#fbbf24; /* amber */
-
-      --radius: 18px;
-      --max: 1080px;
-      --shadow: 0 18px 55px rgba(0,0,0,.45);
-      --shadow2: 0 10px 26px rgba(0,0,0,.35);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple SD Gothic Neo","Noto Sans KR", sans-serif;
-      background:
-        radial-gradient(900px 560px at 12% 12%, rgba(34,211,238,.16), transparent 60%),
-        radial-gradient(850px 560px at 88% 18%, rgba(167,139,250,.14), transparent 60%),
-        radial-gradient(900px 650px at 50% 90%, rgba(251,113,133,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
-      overflow-x:hidden;
+    
+    :root {
+      --aviation: #1e40af;
+      --aviation-light: #3b82f6;
+      --electrical: #f59e0b;
+      --electrical-light: #fbbf24;
+      --white: #ffffff;
+      --dark: #0f172a;
     }
-
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:26px 16px 70px}
-
-    /* top bar */
-    .topbar{
-      position: sticky; top: 12px; z-index: 50;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:10px 12px;
-      background: rgba(12, 18, 32, .58);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 12px 36px rgba(0,0,0,.28);
+    
+    body {
+      font-family: 'Montserrat', 'Noto Sans KR', sans-serif;
+      color: var(--dark);
+      overflow-x: hidden;
     }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none;
-      padding:7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      font-weight:900;
-      letter-spacing:-.2px;
-      white-space:nowrap;
+    
+    /* 4K 하와이 석양 배경 */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: 
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)),
+        url('https://images.pexels.com/photos/1118873/pexels-photo-1118873.jpeg?auto=compress&cs=tinysrgb&w=3840') center/cover fixed;
     }
-    .logo{
-      width:12px;height:12px;border-radius:50%;
-      background: conic-gradient(from 180deg, rgba(34,211,238,.95), rgba(167,139,250,.95), rgba(52,211,153,.92), rgba(251,113,133,.92), rgba(34,211,238,.95));
-      box-shadow: 0 0 18px rgba(34,211,238,.25);
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, transparent 0%, rgba(0,0,0,0.3) 100%);
+      animation: pulse 20s ease-in-out infinite;
     }
-    .nav{
-      display:flex; flex-wrap:wrap; gap:8px;
-      justify-content:center;
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
     }
-    .nav a{
-      text-decoration:none;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      font-size:13px;
-      color: rgba(255,255,255,.88);
-      opacity:.92;
+    
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 40px;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
     }
-    .nav a:hover{opacity:1}
-
-    .meta{
-      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;
-      font-size:12px; color: var(--muted2);
-      white-space:nowrap;
+    
+    .nav.scrolled {
+      background: rgba(0,0,0,0.9);
+      padding: 15px 40px;
     }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
+    
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      color: white;
+      text-decoration: none;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
-    .dot{
-      width:9px;height:9px;border-radius:50%;
-      background: rgba(52,211,153,.95);
-      box-shadow: 0 0 14px rgba(52,211,153,.30);
+    
+    .lang-toggle {
+      display: flex;
+      gap: 5px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50px;
+      padding: 5px;
     }
-
-    /* layout */
-    .grid{display:grid; gap:14px}
-    .g2{grid-template-columns: 1.35fr .85fr}
-    .g2b{grid-template-columns: 1fr 1fr}
-    @media (max-width: 980px){
-      .g2,.g2b{grid-template-columns:1fr}
-      .topbar{top:8px}
-      .meta{justify-content:flex-start}
-    }
-
-    /* cards */
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.03));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      position:relative;
-      overflow:hidden;
-    }
-    .card.sub{
-      box-shadow:none;
-      background: rgba(255,255,255,.03);
-    }
-    .card::before{
-      content:"";
-      position:absolute; inset:-1px;
-      background:
-        radial-gradient(680px 240px at 18% 12%, rgba(34,211,238,.16), transparent 55%),
-        radial-gradient(640px 260px at 86% 18%, rgba(167,139,250,.14), transparent 55%),
-        radial-gradient(620px 240px at 62% 110%, rgba(251,113,133,.12), transparent 55%);
-      opacity:.70;
-      pointer-events:none;
-      mask: linear-gradient(#000, transparent 78%);
-    }
-    a, button, input, textarea { position: relative; z-index: 2; }
-
-    /* type */
-    h1{margin:0 0 10px; font-size:44px; letter-spacing:-.9px; line-height:1.07}
-    h2{margin:0 0 10px; font-size:18px; color:rgba(255,255,255,.78); font-weight:900}
-    h3{margin:0 0 10px; font-size:15px; color:rgba(255,255,255,.90)}
-    p{margin:10px 0; color:var(--muted); line-height:1.7}
-    .small{font-size:13px; color: var(--muted2)}
-    .hr{height:1px; background: var(--line); margin:14px 0}
-    section{scroll-margin-top: 92px}
-
-    .headline{
-      background: linear-gradient(90deg, rgba(34,211,238,.98), rgba(167,139,250,.95), rgba(52,211,153,.92), rgba(251,113,133,.92));
-      -webkit-background-clip:text; background-clip:text;
-      color: transparent;
-    }
-    .kicker{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.84);
+    
+    .lang-btn {
+      padding: 10px 24px;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      font-weight: 700;
       font-size: 13px;
-      margin-bottom:14px;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: all 0.3s;
     }
-
-    /* buttons */
-    .btns{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius: 12px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      text-decoration:none;
-      color: rgba(255,255,255,.92);
+    
+    .lang-btn.active {
+      background: white;
+      color: var(--dark);
+      box-shadow: 0 4px 15px rgba(255,255,255,0.4);
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: white;
+      max-width: 1000px;
+      padding: 0 40px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .hero h1 {
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 30px;
+      text-shadow: 0 5px 30px rgba(0,0,0,0.8);
+      letter-spacing: -3px;
+    }
+    
+    .hero p {
+      font-size: 22px;
+      line-height: 1.8;
+      margin-bottom: 50px;
+      text-shadow: 0 3px 20px rgba(0,0,0,0.8);
+    }
+    
+    .cta {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 20px 48px;
+      border: none;
+      border-radius: 60px;
+      font-weight: 800;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btn-primary {
+      background: white;
+      color: var(--aviation);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 3px solid white;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: var(--aviation);
+      transform: translateY(-5px) scale(1.05);
+    }
+    
+    .section {
+      padding: 140px 40px;
+    }
+    
+    .section-dark {
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+    }
+    
+    .section-light {
+      background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    
+    .section-label {
       font-size: 14px;
-      cursor:pointer;
-      box-shadow: var(--shadow2);
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0.8;
     }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.16));
-      border-color: rgba(255,255,255,.16);
+    
+    .aviation-label {
+      color: var(--aviation-light);
+      text-shadow: 0 0 20px rgba(59,130,246,0.5);
     }
-    .btn.accent{
-      background: linear-gradient(135deg, rgba(251,113,133,.16), rgba(251,191,36,.12));
-      border-color: rgba(255,255,255,.16);
+    
+    .electrical-label {
+      color: var(--electrical-light);
+      text-shadow: 0 0 20px rgba(251,191,36,0.5);
     }
-    .btn.ghost{background: rgba(255,255,255,.02); box-shadow:none}
-    .btn.small{padding:9px 10px; font-size:13px}
-
-    /* chips */
-    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .chip{
-      display:inline-flex;
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.82);
-      font-size: 13px;
+    
+    .section-title {
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 25px;
+      letter-spacing: -2px;
     }
-    .chip.ok{border-color: rgba(52,211,153,.35); background: rgba(52,211,153,.08)}
-
-    /* tiles */
-    .tiles{display:grid; grid-template-columns: repeat(3,1fr); gap:12px; margin-top:12px;}
-    .tile{
-      border:1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(255,255,255,.03);
-      padding:12px;
+    
+    .section-description {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
     }
-    .tile b{font-size:16px}
-    @media (max-width: 720px){ .tiles{grid-template-columns:1fr} }
-
-    /* contact form */
-    .form{display:grid; gap:10px;}
-    .inp, .txt{
-      width:100%;
-      padding:11px 12px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      outline:none;
+    
+    /* PDF 배너 그리드 */
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 32px;
+      margin-top: 60px;
     }
-    .txt{min-height:110px; resize:vertical}
-    .note{font-size:12px; color: var(--muted2); margin-top:6px;}
-
-    footer{
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-      color: var(--muted2);
+    
+    /* 🎯 개선된 PDF 배너 카드 */
+    .pdf-banner {
+      position: relative;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: 24px;
+      padding: 40px 32px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    
+    .section-light .pdf-banner {
+      background: white;
+      border: 2px solid rgba(0,0,0,0.08);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    
+    /* 상단 컬러 라인 */
+    .pdf-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--aviation), var(--aviation-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s;
+      box-shadow: 0 0 20px currentColor;
+    }
+    
+    .pdf-banner.electrical::before {
+      background: linear-gradient(90deg, var(--electrical), var(--electrical-light));
+    }
+    
+    /* 호버 효과 */
+    .pdf-banner:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: var(--aviation-light);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+    }
+    
+    .pdf-banner:hover::before {
+      transform: scaleX(1);
+    }
+    
+    /* PDF 아이콘 */
+    .pdf-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, var(--aviation), var(--aviation-light));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin-bottom: 24px;
+      box-shadow: 
+        0 10px 30px rgba(30,64,175,0.4),
+        inset 0 -2px 10px rgba(0,0,0,0.2),
+        inset 0 2px 10px rgba(255,255,255,0.3);
+      transition: all 0.4s;
+    }
+    
+    .pdf-banner:hover .pdf-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 15px 40px rgba(30,64,175,0.6);
+    }
+    
+    .pdf-banner.electrical .pdf-icon {
+      background: linear-gradient(135deg, var(--electrical), var(--electrical-light));
+      box-shadow: 
+        0 10px 30px rgba(245,158,11,0.4),
+        inset 0 -2px 10px rgba(0,0,0,0.2),
+        inset 0 2px 10px rgba(255,255,255,0.3);
+    }
+    
+    .pdf-banner.electrical:hover .pdf-icon {
+      box-shadow: 0 15px 40px rgba(245,158,11,0.6);
+    }
+    
+    .pdf-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    
+    .pdf-description {
+      font-size: 15px;
+      line-height: 1.7;
+      opacity: 0.85;
+      margin-bottom: 20px;
+    }
+    
+    .pdf-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .pdf-badge {
+      padding: 8px 16px;
+      border-radius: 50px;
       font-size: 12px;
-      display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
-
-    .sr{position:absolute;left:-9999px}
+    
+    .badge-ready {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      box-shadow: 0 4px 15px rgba(16,185,129,0.4);
+    }
+    
+    .badge-pending {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: white;
+      box-shadow: 0 4px 15px rgba(245,158,11,0.4);
+    }
+    
+    /* 링크 섹션 */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 60px;
+    }
+    
+    .link-card {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: all 0.4s;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    
+    .section-light .link-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    
+    .link-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+    }
+    
+    .link-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    
+    .link-card ul {
+      list-style: none;
+    }
+    
+    .link-card li {
+      margin-bottom: 12px;
+    }
+    
+    .link-card a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      opacity: 0.85;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .link-card a:hover {
+      opacity: 1;
+      color: var(--aviation-light);
+      transform: translateX(6px);
+    }
+    
+    .link-card a::before {
+      content: '→';
+      font-weight: 800;
+    }
+    
+    .footer {
+      background: #000;
+      color: white;
+      padding: 60px 40px 40px;
+      text-align: center;
+    }
+    
+    .footer-contact {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-contact a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+    
+    .footer-contact a:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .footer-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      margin: 40px 0;
+    }
+    
+    /* 언어 전환 */
+    [data-lang="ko"] .lang-en { display: none; }
+    [data-lang="en"] .lang-ko { display: none; }
+    
+    /* 반응형 */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 48px; }
+      .hero p { font-size: 17px; }
+      .section-title { font-size: 36px; }
+      .pdf-grid { grid-template-columns: 1fr; }
+      .nav { padding: 15px 20px; }
+      .section { padding: 80px 20px; }
+    }
   </style>
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"LEE",
-    "url":"https://lsk690vip.com",
-    "jobTitle":"Avionics & Electrical (Remote)",
-    "email":"mailto:supersungkyu@gmail.com",
-    "telephone":"+82-10-2625-3406",
-    "knowsAbout":[
-      "Commercial Avionics",
-      "Electrical Systems",
-      "Troubleshooting (RCA)",
-      "Safety & Compliance",
-      "Technical Templates"
-    ],
-    "sameAs":[
-      "https://github.com/supersungkyu-create"
-    ]
-  }
-  </script>
 </head>
-
-<body>
-  <div class="wrap">
-    <!-- Top bar -->
-    <div class="topbar" role="navigation" aria-label="Site">
-      <a class="brand" href="#top" aria-label="Go to top">
-        <span class="logo" aria-hidden="true"></span>
-        <span>LEE’s Technology</span>
-      </a>
-
-      <div class="nav" aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#sample">Sample PDF</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div class="meta">
-        <span class="pill"><span class="dot" aria-hidden="true"></span>Open to SG/MY · Remote/Contract</span>
-        <span class="pill">Updated: <span id="updated">—</span></span>
+<body data-lang="en">
+  
+  <nav class="nav" id="nav">
+    <a href="#" class="logo">LSK</a>
+    <div class="lang-toggle">
+      <button class="lang-btn" onclick="setLang('ko')" id="btn-ko">한국어</button>
+      <button class="lang-btn active" onclick="setLang('en')" id="btn-en">English</button>
+    </div>
+  </nav>
+  
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Technical Partner<br>for<br>Global Aviation</h1>
+      <p>
+        Combining hands-on avionics technical support with Korean electrical<br>
+        engineering expertise, delivering reliable technical solutions.
+      </p>
+      <div class="cta">
+        <a href="#aviation" class="btn btn-primary">View Portfolio</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
       </div>
     </div>
-
-    <main id="top" style="margin-top:16px">
-      <!-- HERO -->
-      <div class="grid g2">
-        <header class="card">
-          <span class="kicker">Avionics · Electrical · Remote-ready</span>
-
-          <h1 class="headline">Remote support, clear documents</h1>
-          <p class="small" style="margin-top:0">
-            Practical outputs: checklists · handover · job aids · defect wording
-          </p>
-
-          <div class="chips" aria-label="Focus areas">
-            <span class="chip ok">Avionics</span>
-            <span class="chip ok">Electrical</span>
-            <span class="chip">Troubleshooting</span>
-            <span class="chip">Safety</span>
-          </div>
-
-          <div class="btns">
-            <a class="btn primary" href="#sample">Open Sample PDF</a>
-            <a class="btn accent" href="mailto:supersungkyu@gmail.com">Email</a>
-            <a class="btn" href="tel:+821026253406">Call</a>
-            <a class="btn ghost" href="https://github.com/supersungkyu-create/leetechnician-site" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
-
-          <div class="hr"></div>
-
-          <div class="tiles" aria-label="Highlights">
-            <div class="tile">
-              <b>Avionics</b>
-              <div class="small">RCA / fault isolation</div>
-            </div>
-            <div class="tile">
-              <b>Electrical</b>
-              <div class="small">power / CB / ESD-aware</div>
-            </div>
-            <div class="tile">
-              <b>Deliverables</b>
-              <div class="small">template / PDF / 1-page</div>
-            </div>
-          </div>
-
-          <p class="small" style="margin-top:12px">
-            Email: <a href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
-            &nbsp;·&nbsp;
-            Phone: <a href="tel:+821026253406">+82 10-2625-3406</a>
-          </p>
-        </header>
-
-        <aside class="card" id="work">
-          <h2>What I do</h2>
-          <p class="small" style="margin-top:0">
-            Remote-friendly support and templates for avionics/electrical work.
-          </p>
-
-          <div class="hr"></div>
-
-          <h3>Services (simple)</h3>
-          <div class="grid" style="gap:10px">
-            <div class="card sub">
-              <b>Remote Tech Support</b>
-              <div class="small">Symptom → tests → decision → escalation</div>
-            </div>
-            <div class="card sub">
-              <b>Template Pack</b>
-              <div class="small">handover / checklist / defect report</div>
-            </div>
-            <div class="card sub">
-              <b>1-page Job Aid</b>
-              <div class="small">procedure → one page with cautions</div>
-            </div>
-          </div>
-
-          <div class="hr"></div>
-
-          <h3>Public sample rule</h3>
-          <p class="small">
-            No operator/aircraft identifiers. No OEM manual excerpts/screenshots.
-            Only sanitized, generic content.
-          </p>
-        </aside>
+  </section>
+  
+  <section id="aviation" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label aviation-label">GLOBAL AVIATION CAREER</div>
+        <h2 class="section-title">Avionics Technical Support</h2>
+        <p class="section-description">
+          Professional portfolio for Technical Services, Engineering Support roles<br>
+          in Singapore and Malaysia aviation industry.
+        </p>
       </div>
-
-      <!-- SAMPLE PDF -->
-      <section id="sample" class="card" style="margin-top:14px">
-        <h2>Sample PDF</h2>
-        <p class="small" style="margin-top:0">
-          This button opens the PDF currently uploaded in <b>/assets/docs/</b>.
-        </p>
-
-        <div class="btns">
-          <!-- ✅ matches your uploaded file name -->
-          <a class="btn primary" href="assets/docs/Dashboard%20-%20Carrd.pdf" target="_blank" rel="noopener">
-            Open PDF (Dashboard - Carrd)
-          </a>
-          <a class="btn ghost" href="assets/docs/Dashboard%20-%20Carrd.pdf" download>
-            Download
-          </a>
-        </div>
-
-        <div class="hr"></div>
-
-        <p class="note">
-          If you later rename the PDF to a simpler name (e.g. sample.pdf), only the link here needs to be updated.
-        </p>
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact" class="card" style="margin-top:14px">
-        <h2>Contact</h2>
-
-        <div class="grid g2b">
-          <div class="card sub">
-            <h3>Quick message (mailto)</h3>
-
-            <form class="form" onsubmit="return sendMail();">
-              <label class="sr" for="name">Name / Company</label>
-              <input class="inp" id="name" placeholder="Name / Company" required />
-
-              <label class="sr" for="email">Email</label>
-              <input class="inp" id="email" placeholder="Email" type="email" required />
-
-              <label class="sr" for="subject">Subject</label>
-              <input class="inp" id="subject" placeholder="Subject" required />
-
-              <label class="sr" for="message">Message</label>
-              <textarea class="txt" id="message" placeholder="Message" required></textarea>
-
-              <button class="btn accent" type="submit">Send via Email</button>
-              <div class="note">If mailto is blocked, use the direct buttons.</div>
-            </form>
+      
+      <div class="pdf-grid">
+        <!-- PDF 배너 - GitHub에 업로드 후 자동으로 뷰어 작동 -->
+        <a href="assets/resume/resume-global-v1.pdf" class="pdf-banner" target="_blank">
+          <div class="pdf-icon">📋</div>
+          <h3 class="pdf-title">Global Resume</h3>
+          <p class="pdf-description">Comprehensive CV tailored for international aviation technical support positions.</p>
+          <div class="pdf-meta">
+            <span class="pdf-badge badge-ready">✓ READY</span>
           </div>
-
-          <div class="card sub">
-            <h3>Direct</h3>
-            <div class="btns">
-              <a class="btn primary" href="mailto:supersungkyu@gmail.com">supersungkyu@gmail.com</a>
-              <a class="btn" href="tel:+821026253406">+82 10-2625-3406</a>
-              <a class="btn ghost" href="https://github.com/supersungkyu-create" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
-            </div>
-
-            <div class="hr"></div>
-
-            <p class="small">
-              Location: Korea (KST) · Available: Remote / Contract · Target: SG / MY
-            </p>
+        </a>
+        
+        <a href="assets/resume/career-brief-en.pdf" class="pdf-banner" target="_blank">
+          <div class="pdf-icon">📊</div>
+          <h3 class="pdf-title">Career Brief</h3>
+          <p class="pdf-description">Executive summary highlighting key technical achievements.</p>
+          <div class="pdf-meta">
+            <span class="pdf-badge badge-pending">⏳ PENDING</span>
           </div>
+        </a>
+        
+        <a href="assets/study/weekly-briefing.pdf" class="pdf-banner" target="_blank">
+          <div class="pdf-icon">📰</div>
+          <h3 class="pdf-title">Weekly Briefing</h3>
+          <p class="pdf-description">Latest aviation technology updates and industry insights.</p>
+          <div class="pdf-meta">
+            <span class="pdf-badge badge-pending">⏳ PENDING</span>
+          </div>
+        </a>
+      </div>
+      
+      <div class="links-grid">
+        <div class="link-card">
+          <h3>Singapore Airlines</h3>
+          <ul>
+            <li><a href="https://careers.singaporeair.com/" target="_blank">SIA Careers</a></li>
+            <li><a href="https://www.siaec.com.sg/careers" target="_blank">SIAEC</a></li>
+          </ul>
         </div>
-      </section>
-
-      <footer>
-        <div>© <span id="yy">2026</span> LEE’s Technology · lsk690vip.com</div>
-        <div>Single-file HTML · KST time</div>
-      </footer>
-    </main>
-  </div>
-
+        
+        <div class="link-card">
+          <h3>ST Engineering</h3>
+          <ul>
+            <li><a href="https://www.stengg.com/en/careers/" target="_blank">Careers Portal</a></li>
+          </ul>
+        </div>
+        
+        <div class="link-card">
+          <h3>Job Platforms</h3>
+          <ul>
+            <li><a href="https://sg.jobstreet.com/" target="_blank">JobStreet</a></li>
+            <li><a href="https://www.linkedin.com/jobs/" target="_blank">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="electrical" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-label electrical-label">국내 전기 경력</div>
+        <h2 class="section-title lang-ko">전기 기술 전문가</h2>
+        <h2 class="section-title lang-en">Electrical Engineering</h2>
+        <p class="section-description lang-ko">
+          국내 전기 분야 취업 및 자격증 준비를 위한 포트폴리오
+        </p>
+      </div>
+      
+      <div class="pdf-grid">
+        <a href="assets/resume/resume-korea-v1.pdf" class="pdf-banner electrical" target="_blank">
+          <div class="pdf-icon">📋</div>
+          <h3 class="pdf-title">국문 이력서</h3>
+          <p class="pdf-description">국내 전기·항공 분야 취업용 상세 이력서</p>
+          <div class="pdf-meta">
+            <span class="pdf-badge badge-ready">✓ 준비완료</span>
+          </div>
+        </a>
+        
+        <a href="assets/study/electrical-notes.pdf" class="pdf-banner electrical" target="_blank">
+          <div class="pdf-icon">⚡</div>
+          <h3 class="pdf-title">전기 기술 노트</h3>
+          <p class="pdf-description">전기 이론 핵심 정리 및 현장 적용 사례</p>
+          <div class="pdf-meta">
+            <span class="pdf-badge badge-pending">⏳ 대기</span>
+          </div>
+        </a>
+        
+        <a href="assets/study/problem-review.pdf" class="pdf-banner electrical" target="_blank">
+          <div class="pdf-icon">✏️</div>
+          <h3 class="pdf-title">기출문제 복기</h3>
+          <p class="pdf-description">전기기사 시험 기출 분석 자료</p>
+          <div class="pdf-meta">
+            <span class="pdf-badge badge-pending">⏳ 대기</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <footer id="contact" class="footer">
+    <div class="footer-contact">
+      <a href="mailto:supersungkyu@gmail.com">📧 supersungkyu@gmail.com</a>
+      <a href="tel:+821026253406">📞 +82 10-2625-3406</a>
+      <a href="https://github.com/supersungkyu-create" target="_blank">💻 GitHub</a>
+    </div>
+    <div class="footer-divider"></div>
+    <p>© 2026 LEE Sung Kyu | Avionics & Electrical Specialist</p>
+  </footer>
+  
   <script>
-    // KST updated time
-    (function(){
-      const now = new Date();
-      const kst = new Date(now.getTime() + 9*60*60*1000);
-      const pad = (n)=> String(n).padStart(2,'0');
-      const y = kst.getUTCFullYear();
-      const m = pad(kst.getUTCMonth()+1);
-      const d = pad(kst.getUTCDate());
-      const hh = pad(kst.getUTCHours());
-      const mm = pad(kst.getUTCMinutes());
-      const updated = `${y}-${m}-${d} ${hh}:${mm} (KST)`;
-      const el = document.getElementById('updated');
-      if(el) el.textContent = updated;
-
-      const yy = document.getElementById('yy');
-      if(yy) yy.textContent = String(y);
-    })();
-
-    function sendMail(){
-      const to = "supersungkyu@gmail.com";
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const message = document.getElementById("message").value.trim();
-
-      const body = [
-        `Name/Company: ${name}`,
-        `Email: ${email}`,
-        ``,
-        message
-      ].join("\n");
-
-      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailto;
-      return false;
+    function setLang(lang) {
+      document.body.setAttribute('data-lang', lang);
+      document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      localStorage.setItem('preferred-lang', lang);
     }
+    
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 100);
+    });
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('preferred-lang') || 'en';
+      setLang(savedLang);
+    });
+    
+    document.querySelectorAll('.pdf-banner').forEach(card => {
+      card.addEventListener('click', function(e) {
+        const badge = this.querySelector('.pdf-badge');
+        if (badge && badge.classList.contains('badge-pending')) {
+          e.preventDefault();
+          alert('PDF 파일을 먼저 GitHub에 업로드해주세요!\n\n1. assets/resume/ 또는 assets/study/ 폴더로 이동\n2. Add file → Upload files\n3. PDF를 드래그 앤 드롭\n4. Commit changes');
+        }
+      });
+    });
+    
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+      });
+    });
   </script>
 </body>
 </html>
+```
+
+---
+
+## 📦 GitHub 업로드 완벽 가이드:
+
+### 1️⃣ index.html 업로드
+- 위 코드를 `index.html`로 저장
+- GitHub 저장소 메인에 업로드
+
+### 2️⃣ 폴더 만들기
+```
+Add file → Create new file → 파일명에 입력:
+assets/resume/.gitkeep
+assets/study/.gitkeep
